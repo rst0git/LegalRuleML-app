@@ -32,8 +32,8 @@ class Converter extends Controller
         "then" => TRUE
     ];
 
-    const SPECIAL_ELEMENTS = [
-        "Override" => "override_statement_handler",
+    // const SPECIAL_ELEMENTS = [
+        // "Override" => "override_statement_handler",
         // "ConstitutiveStatement" => "statement_handler",
         // "FactualStatement" => "statement_handler",
         // "PenaltyStatement" => "statement_handler",
@@ -41,7 +41,7 @@ class Converter extends Controller
         // "ReparationStatement" => "statement_handler",
         // "ConstitutiveStatement" => "statement_handler",
         // "Statements" => "statements_handler",
-    ];
+    // ];
 
     public static function override_statement_handler(\DOMNode $xml, \DOMNode $html, &$htmlDoc) {
             $over = $xml->getAttribute("over");
@@ -102,9 +102,9 @@ class Converter extends Controller
           self::childrenToHTML($xml, $html, $htmlDoc);
 
           // Use overriding handler function for element content, if any
-          if (isset(self::SPECIAL_ELEMENTS[$xmlTag])) {
-              self::{self::SPECIAL_ELEMENTS[$xmlTag]}($xml, $html, $htmlDoc);
-          }
+          // if (isset(self::SPECIAL_ELEMENTS[$xmlTag])) {
+          //     self::{self::SPECIAL_ELEMENTS[$xmlTag]}($xml, $html, $htmlDoc);
+          // }
           return $html;
       } else if ($xml instanceof \DOMText) {
           return $htmlDoc->createTextNode($xml->wholeText);

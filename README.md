@@ -12,6 +12,17 @@ Install [docker-compose](https://docs.docker.com/compose/install/)
 pip install docker-compose
 ```
 
+Copy `.env.example` to `.env`
+```sh
+cp ./src/.env.example ./src.env
+```
+
+Run `composer install`
+```sh
+cd ./src
+composer install
+```
+
 Execute `run.sh`
 ```sh
 ./run.sh
