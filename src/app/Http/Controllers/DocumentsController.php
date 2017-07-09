@@ -111,7 +111,15 @@ class DocumentsController extends Controller
         {
           return redirect('/doc')->with('error', 'Document could not be found.');
         }
-        return view('documents.show')->with('doc', $doc);
+        $data = [
+          'doc' => $doc,
+          'html' => ''
+        ];
+        if(config('app.debug')){
+          $filepath = 'uploads'.DIRECTORY_SEPARATOR.$doc->filename;
+          $data['html'] = Converter::xml_to_html($filepath);
+        }
+        return view('documents.show')->with('data', $data);
       }
 
       // Download XML file
