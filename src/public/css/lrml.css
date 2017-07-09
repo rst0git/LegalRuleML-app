@@ -1,3 +1,13 @@
+.key {
+    font-size: small;
+    font-weight: bold;
+    content: " [#" attr(id) "] ";
+    color: black;
+    text-decoration: underline;
+}
+
+/* actual LRML elements below this line */
+
 .LegalRuleML{
     max-width: 800px;
     margin: 15px auto;
@@ -33,29 +43,6 @@
     padding: 1px;
     border-style: solid;
     border-width: 1px;
-}
-
-
-.ConstitutiveStatement:before,
-.FactualStatement:before,
-.PenaltyStatement:before,
-/*.PrescriptiveStatement:before,*/
-.Obligation:before,
-.Permission:before,
-.Prohibition:before,
-.ReparationStatement:before,
-.ConstitutiveStatement:before
-{
-  font-size: x-small;
-  font-weight: bold;
-  content: " [#" attr(id) "] ";
-}
-
-.Override::before
-{
-  font-size: small;
-  content: " Override over:" attr(data-over) " under:" attr(data-under);
-
 }
 
 .ConstitutiveStatement:hover,

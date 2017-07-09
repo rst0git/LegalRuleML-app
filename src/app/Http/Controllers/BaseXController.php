@@ -58,7 +58,7 @@ class BaseXController extends Controller
     }
 
     // Search within BaseX
-    public static function full_text_search($statement, $text) {
+    public static function full_text_search($statement, $text): array {
       // Namespace declaration in XQuery
       $input = 'declare namespace lrml = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"; ';
       // Declare variable used for text search
@@ -67,7 +67,7 @@ class BaseXController extends Controller
       // Full text search query
       $input .= 'for $i in //lrml:'.$statement.' ';
       $input .= 'where $i//lrml:Paraphrase[text() contains text {$text} ] ';
-      $input .= 'return $i';
+      $input .= 'return <result path="{db:path($i)}">{$i}</result>';
 
       // Open Session
       $session = BaseXController::get_session();
@@ -79,12 +79,30 @@ class BaseXController extends Controller
       $query->bind('text', $text);
 
       // Get query results
-      $output = $query->execute()."\n";
+      $XMLresults = [];
+      while ($query->more()) {
+        $XMLresults[] = $query->next();
+      }
 
       // Close query instance
       $query->close();
 
-      return $output;
+      $results = [];
+      foreach ($XMLresults as $xml) {
+        $xmlDocument = new \DOMDocument;
+        $xmlDocument->loadXML($xml);
+        $result = $xmlDocument->documentElement;
+        $lrml = $result->firstChild;
+        if ($lrml instanceof \DOMText) {
+            $lrml = $lrml->nextSibling;
+        }
+        $results[] = [
+          "path" => $result->getAttribute("path"),
+          "lrml" => $lrml
+        ];
+      }
+
+      return $results;
     }
 
     // Delete document from BaseX

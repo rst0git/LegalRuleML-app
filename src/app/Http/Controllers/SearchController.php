@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+Use App\Document;
 Use App\Http\Controllers\BaseXController;
 
 class SearchController extends Controller
@@ -47,18 +48,22 @@ class SearchController extends Controller
 
       $text = $request->input('search');
 
-      $XQuery_result = BaseXController::full_text_search($statement, $text);
-
-      if(strlen($XQuery_result) > 1){
-        $html_result = Converter::xml_to_html('<div>'.$XQuery_result.'</div>', false);
-      }
-      else {
-        $html_result = "";
+      $XML_results = BaseXController::full_text_search($statement, $text);
+      $HTML_results = [];
+      foreach ($XML_results as $result) {
+        $path = $result["path"];
+        $url = "/doc/show/" . Document::where('filename', $path)->first()->id;
+        $html = Converter::DOM_to_html($result["lrml"], $url);
+        $HTML_results[] = [
+            "name" => $path,
+            "url" => $url,
+            "html" => $html
+        ];
       }
 
       $data = [
         'kinds' => self::STATEMENT_KINDS,
-        'query_result' => $html_result,
+        'query_results' => $HTML_results,
         'statement' => $statement,
         'search' => $text
       ];

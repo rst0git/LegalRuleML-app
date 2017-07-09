@@ -19,8 +19,15 @@
   {!! Form::close()!!}
 </div>
   <div class="container well">
-    @if(!empty($data['query_result']))
-        {!! $data['query_result'] !!}
+    @if(!empty($data['query_results']))
+        <ul>
+            @foreach ($data['query_results'] as $result)
+                <li>
+                    <a href="{{ $result['url'] }}">{{ $result['name'] }}</a>:
+                    {!! $result['html'] !!}
+                </li>
+            @endforeach
+        </ul>
     @else
       <span>There are no results that match your search.</span>
     @endif
