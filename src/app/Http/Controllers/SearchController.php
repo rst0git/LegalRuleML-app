@@ -41,7 +41,12 @@ class SearchController extends Controller
 
       $XQuery_result = BaseXController::full_text_search($statement, $text);
 
-      $html_result = Converter::xml_to_html('<div>'.$XQuery_result.'</div>', false);
+      if(strlen($XQuery_result) > 1){
+        $html_result = Converter::xml_to_html('<div>'.$XQuery_result.'</div>', false);
+      }
+      else {
+        $html_result = "";
+      }
 
       $data = [
         'query_result' => $html_result,

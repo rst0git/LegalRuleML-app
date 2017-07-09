@@ -22,9 +22,11 @@
       </div>
   {!! Form::close()!!}
 </div>
+  <div class="container well">
     @if(!empty($data['query_result']))
-      <div class="container well">
         {!! $data['query_result'] !!}
-      </div>
+    @else
+      <span>There are no results that match your search.</span>
     @endif
+  </div>
 @endsection
