@@ -4,6 +4,7 @@
     content: " [#" attr(id) "] ";
     color: black;
     text-decoration: underline;
+    font-family: sans-serif;
 }
 
 /* actual LRML elements below this line */
@@ -14,6 +15,8 @@
     padding-left: 15px;
     padding-right: 15px;
     color: #000;
+    font-family: Georgia, serif;
+    font-size: 11pt;
 }
 
 .Statements {
@@ -159,6 +162,7 @@
 .OverrideStatement{						/* For testing */
     border-color: #b30000;
     background-color:	#ff6666;
+    font-family: sans-serif;
 }
 
 .Comment {
