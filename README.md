@@ -13,8 +13,14 @@ pip install docker-compose
 ```
 
 Copy `.env.example` to `.env`
-```
+```sh
 cp ./src/.env.example ./src.env
+```
+
+Run `composer install`
+```sh
+cd ./src
+composer install
 ```
 
 Execute `run.sh`
