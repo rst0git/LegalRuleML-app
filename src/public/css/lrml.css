@@ -1,0 +1,197 @@
+.LegalRuleML{
+    max-width: 800px;
+    margin: 15px auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #000;
+}
+
+.Statements {
+    display: block;
+    margin: 15px;
+    padding: 15px;
+
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+
+.ConstitutiveStatement,
+.FactualStatement,
+.PenaltyStatement,
+/*.PrescriptiveStatement,*/
+.Obligation,
+.Permission,
+.Prohibition,
+.ReparationStatement,
+.OverrideStatement {				/* For testing */
+    display: block;
+    line-height: 1.7em; /* 1em = 12px in this case. 20/12 == 1.666666  */
+    position: relative;
+    margin: auto 2px;
+    padding: 1px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+.ConstitutiveStatement:before,
+.FactualStatement:before,
+.PenaltyStatement:before,
+/*.PrescriptiveStatement:before,*/
+.Obligation:before,
+.Permission:before,
+.Prohibition:before,
+.ReparationStatement:before,
+.ConstitutiveStatement:before
+{
+  font-size: x-small;
+  font-weight: bold;
+  content: " [#" attr(id) "] ";
+}
+
+.Override::before
+{
+  font-size: small;
+  content: " Override over:" attr(data-over) " under:" attr(data-under);
+
+}
+
+.ConstitutiveStatement:hover,
+.FactualStatement:hover,
+.PenaltyStatement:hover,
+/*.PrescriptiveStatement:hover,*/
+.Obligation:hover,
+.Permission:hover,
+.Prohibition:hover,
+.ReparationStatement:hover,
+.OverrideStatement:hover
+{
+  border-color: #333;
+  border-width: 2px;
+}
+
+.ConstitutiveStatement:hover::after,
+.FactualStatement:hover::after,
+.PenaltyStatement:hover::after,
+/*.PrescriptiveStatement:hover::after,*/
+.Obligation:hover::after,
+.Permission:hover::after,
+.Prohibition:hover::after,
+.ReparationStatement:hover::after,
+.OverrideStatement:hover::after   				/* For testing */
+{
+    background: #333;
+    background: rgba(0,0,0,.8);
+    border-radius: 2px;
+    top: -25px;
+    left: 15px;
+    color: #fff;
+    padding: 1px 5px;
+    position: absolute;
+    z-index: 98;
+}
+
+
+.ConstitutiveStatement:hover::after {
+  content: "Constitutive Statement" ;
+}
+
+.FactualStatement:hover::after {
+  content: "Factual Statement" ;
+}
+
+.PenaltyStatement:hover::after {
+  content: "Penalty Statement" ;
+}
+
+/*.PrescriptiveStatement:hover::after {
+  content: "Prescriptive Statement" ;
+}*/
+
+.Obligation:hover::after {
+	content: "Obligation" ;
+}
+
+.Permission:hover::after {
+	content: "Permission" ;
+}
+
+.Prohibition:hover::after {
+	content: "Prohibition" ;
+}
+
+.ReparationStatement:hover:after {
+  content: "Reparation Statement" ;
+}
+
+.OverrideStatement:hover:after {				/* For testing */
+  content: "Override Statement" ;
+}
+
+.ConstitutiveStatement {
+    border-color:  	#00008B;
+    background-color: #ADD8E6;
+}
+
+.FactualStatement {
+    border-color: #00004d;
+    background-color: #b3b3ff;
+}
+
+.PenaltyStatement{
+    border-color: #F08080;
+    background-color: #FFDAB9;
+}
+
+/*PrescriptiveStatement {
+    border-color: #32CD32;
+    background-color:#90EE90;
+}*/
+
+.Obligation {
+    border-color: #e67300;
+    background-color:	#ffa64d;
+}
+
+.Permission {
+	border-color: #669900;
+	background-color: #ccff66;
+}
+
+.Prohibition {
+	border-color: #ffff4d;
+	background-color: #e6e600;
+}
+.ReparationStatement{
+    border-color: #DB7093;
+    background-color:	#BC8F8F;
+}
+
+.OverrideStatement{						/* For testing */
+    border-color: #b30000;
+    background-color:	#ff6666;
+}
+
+.Comment {
+  display: block;
+  text-align: center;
+  font-style: oblique;
+}
+
+.Statements .Comment {
+	display: block;
+	text-align: center;
+	font-style: italic;
+	line-height: 2.5em;
+}
+
+/* For testing */
+.OverrideStatement .Comment {
+	 display: inline;
+    line-height: 1.7em; /* 1em = 12px in this case. 20/12 == 1.666666  */
+    position: relative;
+    margin: auto 2px;
+    padding: 1px;
+}

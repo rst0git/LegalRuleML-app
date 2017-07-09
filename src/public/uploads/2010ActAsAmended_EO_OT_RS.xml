@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../xml-specs/stylesheet/css/style.css"?>
+<lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+ xmlns:ruleml="http://ruleml.org/spec" xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ http://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/csprd01/xsd-schema/compact/lrml-compact.xsd">
+
+ <lrml:Comment> Tobacco and Primary Medical Services (Scotland) Act 2010 asp 3 (Scottish Act) Part 1
+  TOBACCO AND NICOTINE VAPOUR PRODUCTS ETC. Chapter 1 DISPLAY, SALE AND PURCHASE Display of tobacco
+  products etc. </lrml:Comment>
+
+ <!-- Legal Source -->
+ <lrml:LegalSources>
+  <lrml:LegalSource key="src1" sameAs="../Corpus/2010ActAsAmended_EO_OT.docx'"/>
+ </lrml:LegalSources>
+
+ <lrml:Statements key="stmts1">
+  <lrml:Comment> 1 Prohibition of tobacco displays etc. </lrml:Comment>
+
+  <!-- Constitutive Statement: 1 -->
+  <lrml:ConstitutiveStatement key="cs1">
+   <ruleml:Rule>
+    <lrml:Paraphrase> A person who in the course of business displays or causes to be displayed
+     tobacco products or smoking related products in a place where tobacco products are offered for
+     sale commits an offence. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <lrml:Statements key="stmts1.1">
+
+    <!-- Constitutive Statement: 2 -->
+   <lrml:ConstitutiveStatement key="cs2">
+    <ruleml:Rule>
+     <lrml:Paraphrase> A person does not commit an offence under subsection (1) if the display - is
+      in a specialist tobacconist, </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+  </lrml:Statements>
+
+
+  <!-- Constitutive Statement: 3 -->
+  <lrml:ConstitutiveStatement key="cs3">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> does not include cigarettes or hand-rolling tobacco </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 4 -->
+  <lrml:ConstitutiveStatement key="cs4">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> Complies with any prescribed requirements. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts1.2">
+
+   <!-- Constitutive Statement: 5 -->
+  <lrml:ConstitutiveStatement key="cs5">
+   <ruleml:Rule>
+    <lrml:Paraphrase> A person does not commit an offence under subsection the tobacco products or
+     smoking related products are displayed in the course of a business involving the sale of
+     tobacco products only to persons who carry on a tobacco business (or their employees)
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 6 -->
+  <lrml:ConstitutiveStatement key="cs6">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> the display complies with any prescribed requirements. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements>
+
+   <!-- Constitutive Statement: 7 -->
+  <lrml:ConstitutiveStatement key="cs7">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Permission>
+      <lrml:Paraphrase> The Scottish Ministers may provide in regulations that no offence is
+       committed under subsection (1) in relation to a display of tobacco products or smoking
+       related products which complies with requirements specified in the regulations.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 8 -->
+  <lrml:ConstitutiveStatement key="cs8">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Penalty>
+      <lrml:Paraphrase> A person guilty of an offence under subsection (1) is liable on summary
+       conviction to a fine not exceeding level 4 on the standard scale. </lrml:Paraphrase>
+     </lrml:Penalty>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 9 -->
+  <lrml:ConstitutiveStatement key="cs9">
+   <ruleml:Rule>
+    <lrml:Paraphrase> For the purposes of subsection (1), a website is not a place.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 10 -->
+  <lrml:ConstitutiveStatement key="cs10">
+   <ruleml:Rule>
+    <lrml:Paraphrase> In subsection (2), “specialist tobacconist”has the meaning given by section
+     6(2) of the Tobacco Advertising and Promotion Act 2002 (c.36). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Override cs9 under cs1 -->
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs9" under="#cs1"/>
+  </lrml:OverrideStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts2">
+  <lrml:Comment>2 Displays which are also advertisements</lrml:Comment>
+
+  <!-- Constitutive Statement: 11 -->
+  <lrml:ConstitutiveStatement key="cs11">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> The Scottish Ministers may by regulations provide that a display of tobacco
+       products or smoking related products which also amounts to an advertisement is to be treated
+       for the purposes of offences under this Act and the Tobacco Advertising and Promotion Act
+       2002 </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 12 -->
+  <lrml:ConstitutiveStatement key="cs12">
+   <ruleml:Rule>
+    <lrml:Paraphrase> as an advertisement and not as a display. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 13 -->
+  <lrml:ConstitutiveStatement key="cs13">
+   <ruleml:Rule>
+    <lrml:Paraphrase> as a display and not as an advertisement. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts3">
+  <lrml:Comment>3 Regulation of display of prices</lrml:Comment>
+
+  <!-- Constitutive Statement: 14 -->
+  <lrml:ConstitutiveStatement key="cs14">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> The Scottish Ministers may by regulations impose requirements in relation to
+       the display in the course of business of prices of tobacco products or smoking related
+       products in a place where tobacco products are offered for sale. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <lrml:Statements key="stmts3.1">
+    <!-- Constitutive Statement: 15 -->
+   <lrml:ConstitutiveStatement key="cs15">
+    <ruleml:Rule>
+     <lrml:Paraphrase> For the purposes of subsection (1), a website is not a place
+     </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+
+   <!-- Constitutive Statement: 16 -->
+   <lrml:ConstitutiveStatement key="cs16">
+    <ruleml:Rule>
+     <lrml:Paraphrase> but the regulations may otherwise provide for the meaning of “place” in that
+      subsection. </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:ConstitutiveStatement>
+
+   <!-- Override cs16 under cs15 -->
+   <lrml:OverrideStatement>
+    <lrml:Override over="#cs16" under="#cs15"/>
+   </lrml:OverrideStatement>
+  </lrml:Statements>
+
+  <!-- Constitutive Statement: 17 -->
+  <lrml:ConstitutiveStatement key="cs17">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> A person who displays or causes to be displayed prices of tobacco products
+       or smoking related products in breach of a requirement contained in the regulations commits
+       an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 18 -->
+  <lrml:ConstitutiveStatement key="cs18">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> A person guilty of an offence under subsection (3) is liable on summary
+       conviction to a fine not exceeding level 4 on the standard scale. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 19 -->
+  <lrml:ConstitutiveStatement key="cs19">
+   <ruleml:Rule>
+    <lrml:Paraphrase> The regulations may provide that a display of prices which also amounts to an
+     advertisement is to be treated for the purposes of offences under this Act and the Tobacco
+     Advertising and Promotion Act 2002 </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 20 -->
+  <lrml:ConstitutiveStatement key="cs20">
+   <ruleml:Rule>
+    <lrml:Paraphrase> as an advertisement and not as a display of prices </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 21 -->
+  <lrml:ConstitutiveStatement key="cs21">
+   <ruleml:Rule>
+    <lrml:Paraphrase> as a display of prices and not as an advertisement. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts4">
+  <lrml:Comment>4 Sale of tobacco products to persons under 18</lrml:Comment>
+
+  <!-- Constitutive Statement: 21 -->
+  <lrml:ConstitutiveStatement key="cs21">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> A person who sells a tobacco product or cigarette papers to a person under
+       the age of 18 commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <lrml:Statements key="stmts4.1">
+
+   <lrml:PrescriptiveStatement key="ps22">
+    <ruleml:Rule>
+     <lrml:Paraphrase>
+      <lrml:Permission>
+       <lrml:Paraphrase> It is a defence to a charge in proceedings against a person (“the accused”)
+        under subsection (1) that the accused believed the person under the age of 18 (“the
+        customer”) to be aged 18 or over, </lrml:Paraphrase>
+      </lrml:Permission>
+     </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:PrescriptiveStatement>
+
+   <lrml:PrescriptiveStatement key="ps23">
+    <ruleml:Rule>
+     <lrml:Paraphrase>
+      <lrml:Obligation>
+       <lrml:Paraphrase> the accused had taken reasonable steps to establish the customer's age.
+       </lrml:Paraphrase>
+      </lrml:Obligation>
+     </lrml:Paraphrase>
+    </ruleml:Rule>
+   </lrml:PrescriptiveStatement>
+
+   <!-- Override ps22 under ps23 -->
+   <lrml:OverrideStatement>
+    <lrml:Override over="#ps22" under="#ps23"/>
+   </lrml:OverrideStatement>
+
+  </lrml:Statements>
+
+  <!-- Constitutive Statement: 24 -->
+  <lrml:ConstitutiveStatement key="cs24">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> For the purposes of subsection (2)(b), the accused is to be treated as
+       having taken reasonable steps to establish the customer's age if and only if
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 25 -->
+  <lrml:ConstitutiveStatement key="cs25">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> the accused was shown any of the documents mentioned in subsection (4),
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 26 -->
+  <lrml:ConstitutiveStatement key="cs26">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> that document would have convinced a reasonable person as to the customer's
+       age. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 27 -->
+  <lrml:ConstitutiveStatement key="cs27">
+   <ruleml:Rule>
+    <lrml:Paraphrase> The documents referred to in subsection (3)(a) are any document bearing to be
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 28 -->
+  <lrml:ConstitutiveStatement key="cs28">
+   <ruleml:Rule>
+    <lrml:Paraphrase> a passport </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 29 -->
+  <lrml:ConstitutiveStatement key="cs29">
+   <ruleml:Rule>
+    <lrml:Paraphrase> a European Union photocard driving licence </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 30 -->
+  <lrml:ConstitutiveStatement key="cs30">
+   <ruleml:Rule>
+    <lrml:Paraphrase> such other document, or a document of such description, as may be prescribed.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 31 -->
+  <lrml:ConstitutiveStatement key="cs31">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Penalty>
+      <lrml:Comment> A person guilty of an offence under subsection (1) is liable on summary
+       conviction to a fine not exceeding level 4 on the standard scale. </lrml:Comment>
+     </lrml:Penalty>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts5">
+  <lrml:Comment>4A Sale of nicotine vapour products to persons under 18</lrml:Comment>
+
+  <!-- Constitutive Statement: 32 -->
+  <lrml:ConstitutiveStatement key="cs32">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Prohibition>
+      <lrml:Paraphrase> A person who sells a nicotine vapour product to a person under the age of 18
+       commits an offence. </lrml:Paraphrase>
+     </lrml:Prohibition>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 33 -->
+  <lrml:ConstitutiveStatement key="cs33">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Permission>
+      <lrml:Paraphrase> It is a defence to a charge in proceedings against a person (“the accused”)
+       under subsection (1) that he accused believed the person under the age of 18 (“the customer”)
+       to be aged 18 or over, </lrml:Paraphrase>
+     </lrml:Permission>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 34 -->
+  <lrml:ConstitutiveStatement key="cs34">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> the accused had taken reasonable steps to establish the customer's age.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 35 -->
+  <lrml:ConstitutiveStatement key="cs35">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Perscriptive>
+      <lrml:Paraphrase> For the purposes of subsection (2)(b), the accused is to be treated as
+       having taken reasonable steps to establish the customer's age if and only if
+      </lrml:Paraphrase>
+     </lrml:Perscriptive>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 36 -->
+  <lrml:ConstitutiveStatement key="cs36">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> the accused was shown any of the documents mentioned in subsection (4)
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 37 -->
+  <lrml:ConstitutiveStatement key="cs37">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> that document would have convinced a reasonable person as to the customer's
+       age. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 38 -->
+  <lrml:ConstitutiveStatement key="cs38">
+   <ruleml:Rule>
+    <lrml:Paraphrase> The documents referred to in subsection (3)(a) are any document bearing to be
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 39 -->
+  <lrml:ConstitutiveStatement key="cs39">
+   <ruleml:Rule>
+    <lrml:Paraphrase> a passport </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 40 -->
+  <lrml:ConstitutiveStatement key="cs40">
+   <ruleml:Rule>
+    <lrml:Paraphrase> a European Union photocard driving licence </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 41 -->
+  <lrml:ConstitutiveStatement key="cs41">
+   <ruleml:Rule>
+    <lrml:Paraphrase> such other document, or a document of such description, as may be prescribed.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 42 -->
+  <lrml:ConstitutiveStatement key="cs42">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Penalty>
+      <lrml:Comment> A person guilty of an offence under subsection (1) is liable on summary
+       conviction to a fine not exceeding level 4 on the standard scale. </lrml:Comment>
+     </lrml:Penalty>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts4.2">
+  <lrml:Comment>4B Age verification policy</lrml:Comment>
+
+  <!-- Constitutive Statement: 43 -->
+  <lrml:ConstitutiveStatement key="cs43">
+   <ruleml:Rule>
+    <lrml:Paraphrase> A person commits an offence if the person—carries on a tobacco or nicotine
+     vapour product business </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 44 -->
+  <lrml:ConstitutiveStatement key="cs44">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase> fails to operate an age verification policy in respect of premises at which
+       the person carries on the tobacco or nicotine vapour product business. </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 45 -->
+  <lrml:ConstitutiveStatement key="cs45">
+   <ruleml:Rule>
+    <lrml:Paraphrase> Subsection (1) does not apply to premises (“the business premises”) from which
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 46 -->
+  <lrml:ConstitutiveStatement key="cs46">
+   <ruleml:Rule>
+    <lrml:Paraphrase> tobacco products, cigarette papers or nicotine vapour products are, in
+     pursuance of a sale, despatched for delivery to different premises </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Override cs43 under cs46 -->
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs43" under="#cs46 "/>
+  </lrml:OverrideStatement>
+
+  <!-- Constitutive Statement: 47 -->
+  <lrml:ConstitutiveStatement key="cs47">
+   <ruleml:Rule>
+    <lrml:Paraphrase> no other tobacco or nicotine vapour product business is carried on from the
+     business premises. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Override cs43 under cs47 -->
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs43" under="#cs47 "/>
+  </lrml:OverrideStatement>
+
+  <!-- Constitutive Statement: 48 -->
+  <lrml:ConstitutiveStatement key="cs48">
+   <ruleml:Rule>
+    <lrml:Paraphrase> An “age verification policy”is a policy that steps are to be taken to
+     establish the age of a person attempting to buy a tobacco product, cigarette papers or a
+     nicotine vapour product on the premises (the “customer”) if it appears to the person selling
+     the tobacco product, cigarette papers or nicotine vapour product that the customer may be under
+     the age of 25 (or such older age as may be specified in the policy). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 49 -->
+  <lrml:ConstitutiveStatement key="cs49">
+   <ruleml:Rule>
+    <lrml:Paraphrase> The Scottish Ministers may by regulations amend the age specified in
+     subsection (3). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 50 -->
+  <lrml:ConstitutiveStatement key="cs50">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Permission>
+      <lrml:Comment> The Scottish Ministers may publish guidance on matters relating to age
+       verification policies, including, in particular, guidance about </lrml:Comment>
+     </lrml:Permission>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 51 -->
+  <lrml:ConstitutiveStatement key="cs51">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Comment> steps that should be taken to establish a customer's age </lrml:Comment>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 52 -->
+  <lrml:ConstitutiveStatement key="cs52">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Comment> documents that may be shown to the person selling a tobacco product, cigarette
+       papers or a nicotine vapour product as evidence of a customer's age </lrml:Comment>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 53 -->
+  <lrml:ConstitutiveStatement key="cs53">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Comment> training that should be undertaken by the person selling the tobacco product,
+       cigarette papers or nicotine vapour product </lrml:Comment>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 54 -->
+  <lrml:ConstitutiveStatement key="cs54">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Comment> the form and content of notices that should be displayed in the premises
+      </lrml:Comment>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 55 -->
+  <lrml:ConstitutiveStatement key="cs55">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Comment> A person who carries on a tobacco or nicotine vapour product business must have
+       regard to guidance published under subsection (5) when operating an age verification policy.
+      </lrml:Comment>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 56 -->
+  <lrml:ConstitutiveStatement key="cs56">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Penalty>
+      <lrml:Comment> A person guilty of an offence under subsection (1) is liable on summary
+       conviction to a fine not exceeding level 2 on the standard scale. </lrml:Comment>
+     </lrml:Penalty>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+</lrml:LegalRuleML>

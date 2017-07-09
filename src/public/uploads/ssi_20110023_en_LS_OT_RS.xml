@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../xml-specs/stylesheet/css/style.css"?>
+<lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+ xmlns:ruleml="http://ruleml.org/spec" xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ http://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/csprd01/xsd-schema/compact/lrml-compact.xsd">
+
+
+ <lrml:Comment>The Sale of Tobacco (Registration of Moveable Structures and Fixed Penalty Notices)
+  (Scotland) Regulations 2011</lrml:Comment>
+
+ <!-- Legal Source -->
+ <lrml:LegalSources>
+  <lrml:LegalSource key="src1" sameAs="../Corpus/ssi_20110023_en_LS_OT.docx'"/>
+ </lrml:LegalSources>
+
+ <lrml:Statements key="stmts1">
+<!-- Constitutive Statement: cs1 -->
+  <lrml:ConstitutiveStatement key="cs1">
+   <ruleml:Rule>
+    <lrml:Paraphrase> The Scottish Ministers make the following Regulations in exercise of the
+     powers conferred by sections 24 and 40(2) of and paragraphs 3 and 4 of schedule 1 to the
+     Tobacco and Primary Medical Services (Scotland) Act 2010(a) and all other powers enabling them
+     to do so. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: cs2 -->
+  <lrml:ConstitutiveStatement key="cs2">
+   <ruleml:Rule>
+    <lrml:Paraphrase> In accordance with section 40(4) of that Act, a draft of this instrument has
+     been laid before and approved by resolution of the Scottish Parliament. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts2">
+
+  <lrml:Comment>Citation, commencement and interpretation</lrml:Comment>
+<!-- Constitutive Statement: cs3 -->
+  <lrml:ConstitutiveStatement key="cs3">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Permission>
+      <lrml:Paraphrase> These Regulations may be cited as the Sale of Tobacco (Registration of
+       Moveable Structures and Fixed Penalty Notices) (Scotland) Regulations 2011 </lrml:Paraphrase>
+     </lrml:Permission>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: cs4 -->
+  <lrml:ConstitutiveStatement key="cs4">
+   <ruleml:Rule>
+    <lrml:Paraphrase> and come into force on 1st April 2011. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: cs5 -->
+  <lrml:ConstitutiveStatement key="cs5">
+   <ruleml:Rule>
+    <lrml:Paraphrase> In these Regulations—“the Act” means the Tobacco and Primary Medical Services
+     (Scotland) Act 2010; </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: cs6 -->
+  <lrml:ConstitutiveStatement key="cs6">
+   <ruleml:Rule>
+    <lrml:Paraphrase> “moveable premises” means premises consisting of a vehicle or other moveable
+     structure from which the applicant proposes to carry on a tobacco business </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: cs7 -->
+  <lrml:ConstitutiveStatement key="cs7">
+   <ruleml:Rule>
+    <lrml:Paraphrase> but excluding a vessel. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Override cs6 under cs7 -->
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs7" under="#cs6"/>
+  </lrml:OverrideStatement>
+
+ </lrml:Statements>
+
+<!-- Constitutive Statement: 58 -->
+ <lrml:Statements key="s8mts3">
+  <lrml:ConstitutiveStatement key="cs8">
+   <ruleml:Rule>
+    <lrml:Paraphrase> If premises are moveable premises, Chapter 2 of Part 1 of the Act applies
+     subject to the modifications in regulations 3 and 4 </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: cs9 -->
+  <lrml:ConstitutiveStatement key="cs9">
+   <ruleml:Rule>
+    <lrml:Paraphrase> For—(a) “the addresses of all premises at which the applicant proposes to
+     carry on a tobacco business” in section 11(2)(b) of the Act; and / </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 10 -->
+  <lrml:ConstitutiveStatement key="cs10">
+   <ruleml:Rule>
+    <lrml:Paraphrase> “the address of the further premises at which the applicant proposes to carry
+     on a tobacco business” in section 11(2)(c) of the Act, substitute in accordance with paragraph
+     (2). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Factual Statement: fs11 -->
+  <lrml:FactualStatement key="fs11">
+   <lrml:Comment> Where it is proposed to carry on business from moveable premises in a fixed
+    location substitute </lrml:Comment>
+  </lrml:FactualStatement>
+<!-- Constitutive Statement: 12 -->
+  <lrml:ConstitutiveStatement key="cs12">
+   <ruleml:Rule>
+    <lrml:Paraphrase> (i) a description which identifies the location of all premises at which; and
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 13 -->
+  <lrml:ConstitutiveStatement key="cs13">
+   <ruleml:Rule>
+    <lrml:Paraphrase> the type and registration number of the vehicle or a description and
+     dimensions of the moveable structure being the premises from which, the applicant proposes to
+     carry on a tobacco business”. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Factual Statement: fs14 -->
+  <lrml:FactualStatement key="fs14">
+   <lrml:Comment> in a location which is not fixed substitute </lrml:Comment>
+  </lrml:FactualStatement>
+
+<!-- Constitutive Statement: 15 -->
+  <lrml:ConstitutiveStatement key="cs15">
+   <ruleml:Rule>
+    <lrml:Paraphrase> a description which identifies each street or area at which; and
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: 16 -->
+  <lrml:ConstitutiveStatement key="cs16">
+   <ruleml:Rule>
+    <lrml:Paraphrase> the type and registration number of the vehicle or a description and
+     dimensions of the moveable structure being the premises from which, the applicant proposes to
+     carry on a tobacco business” </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 17 -->
+  <lrml:ConstitutiveStatement key="cs17">
+   <ruleml:Rule>
+    <lrml:Paraphrase> The references in the Act to—(i) “addresses” in section 11(4)(b); and (ii)
+     “address” in sections 11(5), and 13(1)(b) are to be read in accordance with the substitutions
+     in regulation 3. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts4">
+
+  <lrml:Comment>Time after which a fixed penalty notice may not be given</lrml:Comment>
+<!-- Constitutive Statement: 18 -->
+  <lrml:ConstitutiveStatement key="cs18">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase>The time prescribed for the purpose of paragraph 3 of schedule 1 to the Act
+       is 7 days after the day on which the offence took place.</lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 19 -->
+  <lrml:ConstitutiveStatement key="cs19">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Penalty>
+      <lrml:Paraphrase> The amount prescribed for the purposes of paragraph 4(1)(a) and (b) of
+       schedule 1 to the Act for offences under sections 5 and 7 of the Act are respectively —
+      </lrml:Paraphrase>
+     </lrml:Penalty>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 20 -->
+  <lrml:ConstitutiveStatement key="cs20">
+   <ruleml:Rule>
+    <lrml:Paraphrase> £50 (fixed penalty); </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 21 -->
+  <lrml:ConstitutiveStatement key="cs21">
+   <ruleml:Rule>
+    <lrml:Paraphrase> £30 (discounted amount). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts5">
+
+  <lrml:Comment>Amount of fixed penalty and discounted amount for all other offences under Chapters
+   1 and 2 of Part 1 of the Act</lrml:Comment>
+<!-- Constitutive Statement: 22 -->
+  <lrml:ConstitutiveStatement key="cs22">
+   <ruleml:Rule>
+    <lrml:Paraphrase> (1) Subject to paragraph (2), the amounts prescribed for the purposes of
+     paragraph 4(1)(a) and (b) of schedule 1 to the Act for offences under Chapters 1 and 2 of Part
+     1 of the Act other than sections 5 and 7 are respectively— </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 23 -->
+  <lrml:ConstitutiveStatement key="cs23">
+   <ruleml:Rule>
+    <lrml:Paraphrase> £200 (fixed penalty); </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 24 -->
+  <lrml:ConstitutiveStatement key="cs24">
+   <ruleml:Rule>
+    <lrml:Paraphrase> £150 (discounted amount). </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: 25 -->
+  <lrml:ConstitutiveStatement key="cs25">
+   <ruleml:Rule>
+    <lrml:Paraphrase> Where a person is issued with a fixed penalty notice (“the fixed penalty
+     notice”) and that person has been the subject of previous enforcement action within the
+     prescribed period the amounts prescribed for the purposes of paragraph 4(1)(a) and (b) of
+     schedule 1 to the Act are set out in the table in the Schedule to these Regulations.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs25" under="#cs22"/>
+  </lrml:OverrideStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs25" under="#cs23"/>
+  </lrml:OverrideStatement>
+
+  <lrml:OverrideStatement>
+   <lrml:Override over="#cs25" under="#cs24"/>
+  </lrml:OverrideStatement>
+<!-- Constitutive Statement: 26 -->
+  <lrml:ConstitutiveStatement key="cs26">
+   <ruleml:Rule>
+    <lrml:Paraphrase>The time prescribed for the purpose of paragraph 3 of schedule 1 to the Act is
+     7 days after the day on which the offence took place.</lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 27 -->
+  <lrml:ConstitutiveStatement key="cs27">
+   <ruleml:Rule>
+    <lrml:Paraphrase> In this regulation, “enforcement action” means the issue of a fixed penalty
+     notice which is not subsequently withdrawn or the conviction of an offence under Chapter 1 or 2
+     of Part 1 of the Act. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts6">
+  <lrml:Comment>SCHEDULE</lrml:Comment>
+<!-- Constitutive Statement: 28 -->
+  <lrml:ConstitutiveStatement key="cs28">
+   <ruleml:Rule>
+    <lrml:Paraphrase> - Number: One; - Amount of fixed penalty: £400; - Discounted amount: £350;
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 29 -->
+  <lrml:ConstitutiveStatement key="cs29">
+   <ruleml:Rule>
+    <lrml:Paraphrase> - Number: Two; - Amount of fixed penalty: £600; - Discounted amount: £550;
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 30 -->
+  <lrml:ConstitutiveStatement key="cs30">
+   <ruleml:Rule>
+    <lrml:Paraphrase> - Number: Three; - Amount of fixed penalty: £800; - Discounted amount: £750;
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 31 -->
+  <lrml:ConstitutiveStatement key="cs31">
+   <ruleml:Rule>
+    <lrml:Paraphrase> - Number: Four; - Amount of fixed penalty: £1000; - Discounted amount: £950;
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 32 -->
+  <lrml:ConstitutiveStatement key="cs32">
+   <ruleml:Rule>
+    <lrml:Paraphrase> - Number: Five; - Amount of fixed penalty: £1200; - Discounted amount: £1150;
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: 33 -->
+  <lrml:ConstitutiveStatement key="cs33">
+   <ruleml:Rule>
+    <lrml:Paraphrase> Amounts continuing in increments of £200 for each additional previous
+     enforcement action. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+ </lrml:Statements>
+
+ <lrml:Statements key="stmts7">
+  <lrml:Comment>EXPLANATORY NOTE - (This note is not part of the Regulations)</lrml:Comment>
+<!-- Constitutive Statement: 34 -->
+  <lrml:ConstitutiveStatement key="cs34">
+   <ruleml:Rule>
+    <lrml:Paraphrase> These Regulations make provision in relation to the application to moveable
+     structures of Chapter 2 of Part 1 (Register of Tobacco Retailers) of the Tobacco and Primary
+     Medical Services (Scotland) Act 2010 (“the Act”). They also provide in relation to the fixed
+     penalty notice scheme under section 27 and schedule 1 to the Act. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: 35 -->
+  <lrml:ConstitutiveStatement key="cs35">
+   <ruleml:Rule>
+    <lrml:Paraphrase> Regulations 2, 3 and 4 make provision in relation to the application of
+     Chapter 2 to moveable premises. </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 36 -->
+  <lrml:ConstitutiveStatement key="cs36">
+   <ruleml:Rule>
+    <lrml:Paraphrase> Chapter 2 of Part 1 of the Act makes provision in relation to a Register of
+     Tobacco Retailers which is to be established in accordance with section 10 of the Act. Section
+     11 of the Act provides in relation to applications to be put on this Register.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+<!-- Constitutive Statement: 37 -->
+  <lrml:ConstitutiveStatement key="cs37">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Permission>
+      <lrml:Paraphrase>
+       These Regulations are made under section 24 of the Act which allows Scottish Ministers to modify Chapter 2 to apply its provisions to moveable structures. Regulations 3 and 4 modify section 11 of the Act to take account of the fact that tobacco businesses carried on from moveable premises will not have a fixed address as is envisaged by section 11.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 38 -->
+  <lrml:ConstitutiveStatement key="cs38">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase>
+       Regulation 3(2) provides that if the business is carried on from moveable premises in a fixed location then, in the application for registration, it will be necessary to give the following details in relation to those premises:—
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+
+  <!-- Constitutive Statement: 39 -->
+  <lrml:ConstitutiveStatement key="cs39">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase>
+       a description which identifies the location of the premises;
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+  <!-- Constitutive Statement: 40 -->
+  <lrml:ConstitutiveStatement key="cs40">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase>
+       the type and registration number of the vehicle or a description and dimensions of  the moveable structure.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+  <!-- Constitutive Statement: 41 -->
+  <lrml:ConstitutiveStatement key="cs41">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase>
+       If the business is carried on from moveable premises which are not in a fixed location then, in the application for registration, it will be necessary to give the following details in relation to those premises:
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+  <!-- Constitutive Statement: 42 -->
+  <lrml:ConstitutiveStatement key="cs42">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase>
+       a description which identifies each street or area at which the business is carried on;
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+  <!-- Constitutive Statement: 43 -->
+  <lrml:ConstitutiveStatement key="cs43">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Obligation>
+      <lrml:Paraphrase>
+       the type and registration number of the vehicle or a description and dimensions of  the moveable structure.
+      </lrml:Paraphrase>
+     </lrml:Obligation>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+<!-- Constitutive Statement: 44 -->
+  <lrml:ConstitutiveStatement key="cs44">
+   <ruleml:Rule>
+    <lrml:Paraphrase> Regulations 5, 6 and 7 and the Schedule provide in relation to the fixed penalty notice scheme </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+  <!-- Constitutive Statement: 43 -->
+  <lrml:ConstitutiveStatement key="cs43">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Permission>
+      <lrml:Paraphrase>
+       Section 27(1) of the Act provides that a council officer or a constable may issue a fixed penalty notice if they have reason to believe that the person has committed an offence under Chapters 1 or 2 of Part 1 of the Act which provide in relation to tobacco.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 45 -->
+  <lrml:ConstitutiveStatement key="cs45">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     <lrml:Permission>
+      <lrml:Paraphrase>
+       Regulation 7 prescribes the amount and the discounted amount for all other offences under Chapters 1 and 2 of Part 1 of the Act. The amount is £200 and the discounted amount is £150.
+      </lrml:Paraphrase>
+     </lrml:Permission>
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+  <!-- Constitutive Statement: 46 -->
+  <lrml:ConstitutiveStatement key="cs46">
+   <ruleml:Rule>
+    <lrml:Paraphrase>
+     If the person receiving the fixed penalty notice has already had a fixed penalty or a conviction  for a tobacco offence under the Act within the previous two years, the amounts are escalated in accordance with the Schedule to these Regulations.
+    </lrml:Paraphrase>
+   </ruleml:Rule>
+  </lrml:ConstitutiveStatement>
+
+ </lrml:Statements>
+</lrml:LegalRuleML>

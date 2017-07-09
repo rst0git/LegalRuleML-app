@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  xmldb:
+    image: basex/basexhttp:latest
+    ports:
+     - "1984:1984"
+     - "8984:8984"
+  db:
+    image: postgres:latest
+
+    environment:
+      POSTGRES_DB: lrmlsearch
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 94c04d2dfcf13808dd3afcc0781f44cf18531a77af07801665688c7abcdbc1ba
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - ./src:/var/www/html
+
+    environment:
+      BASEX_HOST: xmldb
+      BASEX_PORT: 1984
+      BASEX_USERNAME: admin
+      BASEX_PASSWORD: admin
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: lrmlsearch
+      DB_USERNAME: postgres
+      DB_PASSWORD: 94c04d2dfcf13808dd3afcc0781f44cf18531a77af07801665688c7abcdbc1ba
+
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+      - xmldb
