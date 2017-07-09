@@ -10,11 +10,7 @@
       <div class="form-group row">
         {{Form::label('statement', 'Statement Type:', ['class' => 'col-md-2 col-sm-3 control-label'])}}
         <div class="col-md-4 col-sm-6">
-          {{Form::select('statement', array(
-            'constutative' => 'Constutative',
-            'permission' => 'Permission',
-            'prohibition' => 'Prohibition',
-          ), 'constutative', ['class' => 'form-control'])}}
+          {{Form::select('statement', $data['kinds'], 'ConstitutiveStatement', ['class' => 'form-control'])}}
         </div>
         <div class="col-md-2 col-sm-3 pull-right">
           {{ Form::submit('Search', ['class' => 'btn btn-block btn-primary']) }}

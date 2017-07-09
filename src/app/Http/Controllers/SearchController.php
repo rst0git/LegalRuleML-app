@@ -18,8 +18,18 @@ class SearchController extends Controller
     |
     */
 
+    const STATEMENT_KINDS = [
+        'ConstitutiveStatement' => 'constitutive',
+        'FactualStatement' => 'factual',
+        'PenaltyStatement' => 'penalty',
+        'PrescriptiveStatement' => 'prescriptive',
+        'ReparationStatement' => 'reparation'
+    ];
+
     public function index() {
-          return view('search');
+        return view('search')->with('data', [
+            'kinds' => self::STATEMENT_KINDS
+        ]);
     }
 
     public function search(Request $request){
@@ -30,12 +40,10 @@ class SearchController extends Controller
         'search' => 'required',
       ]);
 
-      $statementMap = [
-        'constutative' => 'ConstitutiveStatement',
-        'permission' => 'Permission',
-        'prohibition' => 'Prohibition',
-      ];
-      $statement = $statementMap[$request->input('statement')];
+      $statement = $request->input('statement');
+      if (!isset(self::STATEMENT_KINDS[$statement])) {
+        return response('', 400);
+      }
 
       $text = $request->input('search');
 
@@ -44,6 +52,7 @@ class SearchController extends Controller
       $html_result = Converter::xml_to_html('<div>'.$XQuery_result.'</div>', false);
 
       $data = [
+        'kinds' => self::STATEMENT_KINDS,
         'query_result' => $html_result,
         'statement' => $statement,
         'search' => $text
