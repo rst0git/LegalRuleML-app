@@ -59,8 +59,8 @@ class Converter extends Controller
     public function collectOverrides(\DOMDocument $xmlDoc) {
         $overrides = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "Override");
         foreach ($overrides as $override) {
-            $over = \rtrim(\ltrim($override->getAttribute("over"), "#"));
-            $under = \rtrim(\ltrim($override->getAttribute("under"), "#"));
+            $over = \trim(\ltrim($override->getAttribute("over"), "#"));
+            $under = \trim(\ltrim($override->getAttribute("under"), "#"));
             $this->overridden[$under][] = $over;
             $this->overriding[$over][] = $under;
         }
