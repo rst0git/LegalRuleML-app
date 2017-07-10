@@ -20,20 +20,21 @@ class BaseXController extends Controller
     */
 
     // Return BaseX session instance
-    public static function get_session() {
-
-          $user = config('basex.username', 'admin');
-          $password = config('basex.password', 'admin');
+    public static function get_session($readOnly = true) {
+          $user = $readOnly ? 'readOnly' : 'createOnly';
+          $password = env('BASEX_'.strtoupper($user).'_PASSWORD');
           $host = env('BASEX_HOST', 'xmldb');
           $port = env('BASEX_PORT', '1984');
-          $session = new Session($host, $port, $user, $password);
           try{
+            // Connect with read only access
+            $session = new Session($host, $port, $user, $password);
             // Open database
             $session->execute('open xmldb');
           }
           catch(\Exception $e) {
-            // Create database open has failed
-            $session->execute('create db xmldb');
+            BaseXController::initializer();
+            $session = new Session($host, $port, 'readOnly', $readOnly_password);
+            $session->execute('open xmldb');
           }
           return $session;
     }
@@ -48,7 +49,7 @@ class BaseXController extends Controller
       $XML_content = $doc->saveXML();
 
       // Open new session
-      $session = BaseXController::get_session();
+      $session = BaseXController::get_session(false);
 
       // Replace files with this name
       $session->replace($filename, $XML_content);
@@ -90,6 +91,7 @@ class BaseXController extends Controller
 
       // Close query instance
       $query->close();
+      $session->close();
 
       $results = [];
       foreach ($XMLresults as $xml) {
@@ -112,13 +114,54 @@ class BaseXController extends Controller
     // Delete document from BaseX
     public static function delete_file($filename) {
       // Open new session
-      $session = BaseXController::get_session();
+      $session = BaseXController::get_session(false);
 
       // Replace files with this name
       $session->execute('delete '.$filename);
 
       // Close session
       $session->close();
+    }
+
+    // Initialise user management for BaseX
+    // - Change admin default passoword
+    // - Create readOnly
+    // - Create createOnly
+    public static function initializer() {
+      // Get environment variables
+      $admin_password = env('BASEX_ADMIN_PASSWORD');
+      $readOnly_password = env('BASEX_READONLY_PASSWORD');
+      $createOnly_password = env('BASEX_CREATEONLY_PASSWORD');
+      $host = env('BASEX_HOST', 'xmldb');
+      $port = env('BASEX_PORT', '1984');
+
+      // Default BaseX credentials
+      $default_admin_user = 'admin';
+      $default_admin_password = 'admin';
+
+      try {
+
+        // Change the default admin password
+        $session = new Session($host, $port, $default_admin_user, $default_admin_password);
+        $session->execute('alter password admin '.$admin_password);
+        $session->close();
+
+      } catch (\Exception $e) {
+        // Password has already been changed
+      }
+
+      // Create "readOnly" and "createOnly" accounts, set passwords
+      // and permissions. Then create database.
+      $session = new Session($host, $port, 'admin', $admin_password);
+      $session->execute('create user readOnly');
+      $session->execute('alter password readOnly '.$readOnly_password);
+      $session->execute('GRANT read TO readOnly');
+      $session->execute('create user createOnly');
+      $session->execute('alter password createOnly '.$createOnly_password);
+      $session->execute('GRANT write TO createOnly');
+      $session->execute('create db xmldb');
+      $session->close();
+
     }
 
 }
