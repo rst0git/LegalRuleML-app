@@ -7,6 +7,12 @@
       <div class="form-group">
           {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Search for ...']) !!}
       </div>
+      <div class="checkbox">
+        <label for="advanced">{!! Form::checkbox('advanced', 'advanced'); !!} Enable Advanced Search</label>
+         <a href="#" onclick="$('#advanced_search_info').slideToggle();">
+           <span class="glyphicon glyphicon-info-sign"></span>
+         </a>
+      </div>
       <div class="form-group row">
         {{Form::label('statement', 'Statement Type:', ['class' => 'col-md-2 col-sm-3 control-label'])}}
         <div class="col-md-4 col-sm-6">
@@ -20,6 +26,19 @@
         </div>
       </div>
   {!! Form::close()!!}
+  <div class="row" id="advanced_search_info" style="display: none;">
+    <div class="col-md-12">
+      <h4>Advanced search examples</h4>
+      <ul>
+        <li><b>Find tokens which are not part of a longer token sequence:</b>
+          <pre><code>'New' not in 'New York'</code></pre></li>
+        <li><b>All strings need to be found:</b>
+          <pre><code>{'Christian', 'Jewish'} all</code></pre></li>
+        <li><b>Words are found in the specified order and results are returned if there are at most three words between <i>some</i> and <i>reason</i>.</b>
+          <pre><code>{ 'some', 'reason' } all ordered distance at most 3 words</code></pre>
+        </ul>
+    </div>
+  </div>
 </div>
   <div class="container well">
     @if(!empty($data['query_results']))
