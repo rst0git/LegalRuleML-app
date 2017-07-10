@@ -43,6 +43,7 @@ php composer.phar install
 chmod -R 755 src/
 chmod -R o+w src/storage/
 chmod -R o+w src/bootstrap/cache/
+chmod -R o+w src/public/uploads/
 docker-compose exec web bash -c "php artisan key:generate"
 ```
 
