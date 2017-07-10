@@ -71,6 +71,16 @@ class BaseXController extends Controller
 
       $query = $advanced ?  $text : '{$text}';
 
+      // Search for all statements within "Statements" element
+      if($statement == 'any')
+      {
+        $statement  = 'Statements//*[self::lrml:ConstitutiveStatement ';
+        $statement .= 'or self::lrml:FactualStatement ';
+        $statement .= 'or self::lrml:PenaltyStatement ';
+        $statement .= 'or self::lrml:PrescriptiveStatement ';
+        $statement .= 'or self::lrml:ReparationStatement] ';
+      }
+
       // Full text search query
       $input .= 'for $i in //lrml:'.$statement.' ';
       if (!$ignoreSearchTerms) {
