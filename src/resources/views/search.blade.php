@@ -8,7 +8,7 @@
           {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Search for ...']) !!}
       </div>
       <div class="checkbox">
-        <label for="advanced">{!! Form::checkbox('advanced', 'advanced'); !!} Enable Advanced Search</label>
+        <label>{!! Form::checkbox('advanced', 'advanced'); !!} Enable Advanced Search</label>
          <a href="#" onclick="$('#advanced_search_info').slideToggle();">
            <span class="glyphicon glyphicon-info-sign"></span>
          </a>
