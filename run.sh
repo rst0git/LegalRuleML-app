@@ -27,7 +27,7 @@ fi
 read -r -p "Migrate database? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-  docker-compose run web bash -c "php artisan migrate && php artisan db:seed"
+  docker-compose run web bash -c "php artisan migrate && php artisan db:seed --class=UsersTableSeeder"
 fi
 
 docker-compose up -d
