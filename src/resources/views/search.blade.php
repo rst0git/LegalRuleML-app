@@ -16,7 +16,7 @@
       <div class="form-group row">
         {{Form::label('statement', 'Statement Type:', ['class' => 'col-md-2 col-sm-3 control-label'])}}
         <div class="col-md-4 col-sm-6">
-          {{Form::select('statement', $data['kinds'], 'ConstitutiveStatement', ['class' => 'form-control'])}}
+          {{Form::select('statement', $data['kinds'], 'any', ['class' => 'form-control'])}}
         </div>
         <div class="col-md-4 col-sm-6">
           {{Form::select('deontic_operator', $data['operator_kinds'], '', ['class' => 'form-control'])}}
