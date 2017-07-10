@@ -13,6 +13,33 @@
     font-size: 11pt;
 }
 
+.overrides {
+    background-color: #ff6666;
+    font-family: sans-serif;
+    font-size: small;
+    border-top-right-radius: 10px;
+    padding: 0 2px;
+    display: table; /* like inline-block, but always on its own line */
+    position: relative; /* line up with border */
+    left: -1px;
+    top: 1px;
+}
+
+.overrides-list {
+    list-style-type: none;
+    padding: 0;
+    display: inline;
+}
+.overrides-list li {
+    display: inline;
+}
+.overrides-list li::after {
+    content: ', ';
+}
+.overrides-list li:last-child::after {
+    content: '';
+}
+
 /* actual LRML elements below this line */
 
 .LegalRuleML{

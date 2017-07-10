@@ -16,6 +16,8 @@ class Converter extends Controller
     |
     */
 
+    const LRML_NS = "http://docs.oasis-open.org/legalruleml/ns/v1.0/";
+
     const ATTRIBUTE_MAP = [
         "key" => "id",
         "over" => "data-over",
@@ -28,11 +30,12 @@ class Converter extends Controller
 
     const OMITTED_ELEMENTS = [
         "Rule" => TRUE,
-        "then" => TRUE
+        "then" => TRUE,
+        "OverrideStatement" => TRUE,
+        "Override" => TRUE
     ];
 
     const SPECIAL_ELEMENTS = [
-        "Override" => "override_statement_handler",
         "ConstitutiveStatement" => "statement_handler",
         "FactualStatement" => "statement_handler",
         "PenaltyStatement" => "statement_handler",
@@ -43,23 +46,51 @@ class Converter extends Controller
 
     private $htmlDoc;
     private $url;
+    private $overridden;
+    private $overriding;
 
     private function __construct(string $url = "") {
         $this->htmlDoc = new \DOMDocument;
         $this->url = $url;
+        $this->overridden = [];
+        $this->overriding = [];
     }
 
-    public function override_statement_handler(\DOMNode $xml, \DOMNode $html) {
-        $over = \ltrim($xml->getAttribute("over"), "#");
-        $under = \ltrim($xml->getAttribute("under"), "#");
-        $html->appendChild($this->htmlDoc->createTextNode("Override over:"));
-        $html->appendChild(self::makeKeyElement($over));
-        $html->appendChild($this->htmlDoc->createTextNode(" under:"));
-        $html->appendChild(self::makeKeyElement($under));
+    public function collectOverrides(\DOMDocument $xmlDoc) {
+        $overrides = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "Override");
+        foreach ($overrides as $override) {
+            $over = \rtrim(\ltrim($override->getAttribute("over"), "#"));
+            $under = \rtrim(\ltrim($override->getAttribute("under"), "#"));
+            $this->overridden[$under][] = $over;
+            $this->overriding[$over][] = $under;
+        }
     }
+
     public function statement_handler(\DOMNode $xml, \DOMNode $html) {
         $key = $xml->getAttribute("key");
         $html->insertBefore(self::makeKeyElement($key), $html->firstChild);
+        if (isset($this->overridden[$key]) || isset($this->overriding[$key])) {
+            $overrides = $this->htmlDoc->createElement('div');
+            $overrides->setAttribute('class', 'overrides');
+            foreach ([
+                "Overriden by: " => $this->overridden[$key] ?? NULL,
+                "Overrides: " => $this->overriding[$key] ?? NULL
+            ] as $label => $list) {
+                if ($list !== NULL) {
+                    $overrides->appendChild($this->htmlDoc->createTextNode($label));
+                    $ul = $this->htmlDoc->createElement('ul');
+                    $ul->setAttribute('class', 'overrides-list');
+                    foreach ($list as $item) {
+                        $li = $this->htmlDoc->createElement('li');
+                        $key = $this->makeKeyElement($item);
+                        $li->appendChild($key);
+                        $ul->appendChild($li);
+                    }
+                    $overrides->appendChild($ul);
+                }
+            }
+            $html->appendChild($overrides);
+        }
     }
 
     private function makeKeyElement(string $key): \DOMElement {
@@ -83,7 +114,7 @@ class Converter extends Controller
         foreach ($xml->childNodes as $xmlChild) {
             // Replace XML elements with their children where specified
 
-            if ($xmlChild instanceof DOMElement && isset(self::OMITTED_ELEMENTS[self::stripNS($xmlChild->tagName)])) {
+            if ($xmlChild instanceof \DOMElement && isset(self::OMITTED_ELEMENTS[self::stripNS($xmlChild->tagName)])) {
                 self::childrenToHTML($xmlChild, $html);
             } else {
                 $html->appendChild(self::toHTML($xmlChild));
@@ -136,6 +167,7 @@ class Converter extends Controller
 
 
       $convertor = new self;
+      $convertor->collectOverrides($doc);
       $html = $convertor->toHTML($doc->documentElement);
       return $convertor->htmlDoc->saveHTML($html);
     }
