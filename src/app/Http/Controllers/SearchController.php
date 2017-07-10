@@ -20,6 +20,7 @@ class SearchController extends Controller
     */
 
     const STATEMENT_KINDS = [
+        'Statements' => 'any',
         'ConstitutiveStatement' => 'constitutive',
         'FactualStatement' => 'factual',
         'PenaltyStatement' => 'penalty',
