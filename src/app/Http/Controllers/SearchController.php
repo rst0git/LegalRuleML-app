@@ -20,7 +20,7 @@ class SearchController extends Controller
     */
 
     const STATEMENT_KINDS = [
-        'any' => 'any',
+        'any' => '(any statement type)',
         'ConstitutiveStatement' => 'constitutive',
         'FactualStatement' => 'factual',
         'PenaltyStatement' => 'penalty',
@@ -29,7 +29,7 @@ class SearchController extends Controller
     ];
 
     const OPERATOR_KINDS = [
-        '' => '(any deontic operator)',
+        '' => '(any or no deontic operator)',
         'Obligation' => 'obligation',
         'Permission' => 'permission',
         'Prohibition' => 'prohibition'
