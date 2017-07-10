@@ -5,13 +5,13 @@
 <div class="well">
   {!!  Form::open(['action' => 'SearchController@index', 'method' => 'GET']) !!}
       <div class="form-group">
+          <label>{!! Form::radio('all', 'yes', $data['all']); !!} All statements</label><br>
+          <label>{!! Form::radio('all', 'no', !$data['all']); !!} Statements containing terms: </label>
           {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Search for ...']) !!}
-      </div>
-      <div class="checkbox">
-        <label>{!! Form::checkbox('advanced', 'advanced'); !!} Enable Advanced Search</label>
-         <a href="#" onclick="$('#advanced_search_info').slideToggle();">
-           <span class="glyphicon glyphicon-info-sign"></span>
-         </a>
+          <label>{!! Form::checkbox('advanced', 'advanced'); !!} Enable Advanced Search</label>
+           <a href="#" onclick="$('#advanced_search_info').slideToggle();">
+             <span class="glyphicon glyphicon-info-sign"></span>
+           </a>
       </div>
       <div class="form-group row">
         {{Form::label('statement', 'Statement Type:', ['class' => 'col-md-2 col-sm-3 control-label'])}}

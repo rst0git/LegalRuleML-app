@@ -62,7 +62,8 @@ class BaseXController extends Controller
     public static function full_text_search(string $statement,
                                             string $text,
                                             bool $advanced,
-                                            string $deonticOperator = ''): array {
+                                            string $deonticOperator = '',
+                                            bool $ignoreSearchTerms = FALSE): array {
       // Namespace declaration in XQuery
       $input = 'declare namespace lrml = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"; ';
       // Declare variable used for text search
@@ -72,10 +73,16 @@ class BaseXController extends Controller
 
       // Full text search query
       $input .= 'for $i in //lrml:'.$statement.' ';
-      if ($deonticOperator === '') {
-          $input .= 'where $i//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
+      if (!$ignoreSearchTerms) {
+          if ($deonticOperator === '') {
+              $input .= 'where $i//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
+          } else {
+              $input .= 'where $i//lrml:' . $deonticOperator . '//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
+          }
       } else {
-          $input .= 'where $i//lrml:' . $deonticOperator . '//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
+          if ($deonticOperator !== '') {
+              $input .= 'where $i//lrml:' . $deonticOperator . ' ';
+          }
       }
       $input .= 'let $doc := doc(concat(db:name($i), "/", db:path($i))) ';
       $input .= 'let $keyref := concat("#", normalize-space($i/@key)) ';
