@@ -52,7 +52,7 @@ class SearchController extends Controller
       $HTML_results = [];
       foreach ($XML_results as $result) {
         $path = $result["path"];
-        $url = route('doc_show') . $path;
+        $url = route('doc_show', ['title' => $path]);
         $html = Converter::DOM_to_html($result["lrml"], $url);
         $HTML_results[] = [
             "name" => $path,
