@@ -16,7 +16,7 @@ Route::get('/', 'PagesController@index');
 Route::get('doc', 'DocumentsController@index');
 Route::get('doc/upload', 'DocumentsController@upload')->middleware('auth');;
 Route::post('doc/upload', 'DocumentsController@store')->middleware('auth');;
-Route::get('doc/show/{id}', 'DocumentsController@show');
+Route::get('doc/show/{title}', 'DocumentsController@show');
 Route::get('doc/{id}/download', 'DocumentsController@download');
 Route::delete('doc/{id}/delete', 'DocumentsController@destroy')->middleware('auth');;
 

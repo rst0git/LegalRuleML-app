@@ -104,9 +104,9 @@ class DocumentsController extends Controller
       }
 
       // Show HTML version of LegalRuleML document
-      public function show($id)
+      public function show($title)
       {
-        $doc = Document::find($id);
+        $doc = Document::where('title', $title)->first();
         if (is_null($doc))
         {
           return redirect('/doc')->with('error', 'Document could not be found.');

@@ -14,7 +14,7 @@
         @foreach($data['docs'] as $doc)
         <div class="row">
           <div class="well">
-            <a href="/doc/show/{{$doc->id}}">{{$doc->title}}</a>
+            <a href="/doc/show/{{$doc->title}}">{{$doc->title}}</a>
           </div>
         </div>
         @endforeach
