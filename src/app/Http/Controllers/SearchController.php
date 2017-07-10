@@ -35,7 +35,7 @@ class SearchController extends Controller
     ];
 
     public function index(Request $request) {
-        if ($request->input('search') === NULL || $request->input('statement') === NULL) {
+        if ($request->input('statement') === NULL) {
             return view('search')->with('data', [
                 'kinds' => self::STATEMENT_KINDS,
                 'operator_kinds' => self::OPERATOR_KINDS,
@@ -52,7 +52,7 @@ class SearchController extends Controller
             return response('', 400);
         }
 
-        $text = $request->input('search');
+        $text = $request->input('search') ?? '';
         $advanced = isset($request->advanced);
         $all = ($request->input('all') ?? "no") === "yes";
 
