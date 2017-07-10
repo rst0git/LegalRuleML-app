@@ -33,7 +33,7 @@ class BaseXController extends Controller
           }
           catch(\Exception $e) {
             BaseXController::initializer();
-            $session = new Session($host, $port, 'readOnly', $readOnly_password);
+            $session = new Session($host, $port, 'readOnly', $password);
             $session->execute('open xmldb');
           }
           return $session;
