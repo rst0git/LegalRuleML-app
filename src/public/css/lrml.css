@@ -69,8 +69,7 @@
 .Obligation,
 .Permission,
 .Prohibition,
-.ReparationStatement,
-.OverrideStatement {				/* For testing */
+.ReparationStatement {
     display: block;
     line-height: 1.7em; /* 1em = 12px in this case. 20/12 == 1.666666  */
     position: relative;
@@ -87,8 +86,7 @@
 .Obligation:hover,
 .Permission:hover,
 .Prohibition:hover,
-.ReparationStatement:hover,
-.OverrideStatement:hover
+.ReparationStatement:hover
 {
   border-color: #333;
   border-width: 2px;
@@ -101,8 +99,7 @@
 .Obligation:hover::after,
 .Permission:hover::after,
 .Prohibition:hover::after,
-.ReparationStatement:hover::after,
-.OverrideStatement:hover::after   				/* For testing */
+.ReparationStatement:hover::after
 {
     background: #333;
     background: rgba(0,0,0,.8);
@@ -148,10 +145,6 @@
   content: "Reparation Statement" ;
 }
 
-.OverrideStatement:hover:after {				/* For testing */
-  content: "Override Statement" ;
-}
-
 .ConstitutiveStatement {
     border-color:  	#00008B;
     background-color: #ADD8E6;
@@ -191,12 +184,6 @@
     background-color:	#BC8F8F;
 }
 
-.OverrideStatement{						/* For testing */
-    border-color: #b30000;
-    background-color:	#ff6666;
-    font-family: sans-serif;
-}
-
 .Comment {
   display: block;
   text-align: center;
@@ -208,13 +195,4 @@
 	text-align: center;
 	font-style: italic;
 	line-height: 2.5em;
-}
-
-/* For testing */
-.OverrideStatement .Comment {
-	 display: inline;
-    line-height: 1.7em; /* 1em = 12px in this case. 20/12 == 1.666666  */
-    position: relative;
-    margin: auto 2px;
-    padding: 1px;
 }
