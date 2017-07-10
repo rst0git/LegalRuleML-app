@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
       DB::table('users')->insert([
             'name' => 'user',
             'email' => 'user@localhost',
-            'password' => bcrypt('lrmlsearch'),
+            'password' => Hash::make('lrmlsearch'),
         ]);
     }
 }
