@@ -1,11 +1,11 @@
 ## Getting Started
-### Install [Docker](https://docs.docker.com/engine/installation/)
+#### Install [Docker](https://docs.docker.com/engine/installation/)
 - [Debian](https://docs.docker.com/v1.12/engine/installation/linux/debian/)
 - [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04#step-1-—-installing-docker)
 - [Linux Mint](http://linuxbsdos.com/2016/12/13/how-to-install-docker-and-run-docker-containers-on-linux-mint-1818-1/)
 - [Arch linux](https://wiki.archlinux.org/index.php/Docker#Installation)
 
-### Install [docker-compose](https://docs.docker.com/compose/install/)
+#### Install [docker-compose](https://docs.docker.com/compose/install/)
 - For Ubuntu
 ```sh
 apt-get install -y docker-compose
@@ -15,27 +15,35 @@ apt-get install -y docker-compose
 ```sh
 pip install docker-compose
 ```
-### Install the php extensions: `php-zip`, `php-mbstring`, `php-xml`
+#### Install the php extensions: `php-zip`, `php-mbstring`, `php-xml`
 - For Ubuntu
 ```sh
 apt-get install -y php7.0 php7.0-zip php7.0-mbstring php7.0-xml
 ```
 
-### Copy `.env.example` to `.env`
+#### Copy `.env.example` to `.env`
 ```sh
 cp ./src/.env.example ./src.env
 ```
 
-### Run `composer install`
+#### Run `composer install`
 ```sh
 cd ./src
 curl -sS https://getcomposer.org/installer | php
 php composer.phar install
 ```
 
-### Execute `run.sh`
+#### Execute `run.sh`
 ```sh
 ./run.sh
+```
+
+#### Finally set file permissions and generate session key
+```
+chmod -R 755 src/
+chmod -R o+w src/storage/
+chmod -R o+w src/bootstrap/cache/
+docker-compose exec web bash -c "php artisan key:generate"
 ```
 
 ## File structure
