@@ -27,9 +27,17 @@ class SearchController extends Controller
         'ReparationStatement' => 'reparation'
     ];
 
+    const OPERATOR_KINDS = [
+        '' => '(no deontic operator)',
+        'Obligation' => 'obligation',
+        'Permission' => 'permission',
+        'Prohibition' => 'prohibition'
+    ];
+
     public function index() {
         return view('search')->with('data', [
-            'kinds' => self::STATEMENT_KINDS
+            'kinds' => self::STATEMENT_KINDS,
+            'operator_kinds' => self::OPERATOR_KINDS
         ]);
     }
 
@@ -45,10 +53,14 @@ class SearchController extends Controller
       if (!isset(self::STATEMENT_KINDS[$statement])) {
         return response('', 400);
       }
+      $deonticOperator = $request->input('deontic_operator');
+      if (!isset(self::OPERATOR_KINDS[$deonticOperator])) {
+        return response('', 400);
+      }
 
       $text = $request->input('search');
 
-      $XML_results = BaseXController::full_text_search($statement, $text);
+      $XML_results = BaseXController::full_text_search($statement, $text, $deonticOperator);
       $HTML_results = [];
       foreach ($XML_results as $result) {
         $path = $result["path"];
@@ -63,8 +75,10 @@ class SearchController extends Controller
 
       $data = [
         'kinds' => self::STATEMENT_KINDS,
+        'operator_kinds' => self::OPERATOR_KINDS,
         'query_results' => $HTML_results,
         'statement' => $statement,
+        'deontic_operator' => $deonticOperator,
         'search' => $text
       ];
 

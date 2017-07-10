@@ -58,7 +58,7 @@ class BaseXController extends Controller
     }
 
     // Search within BaseX
-    public static function full_text_search($statement, $text): array {
+    public static function full_text_search(string $statement, string $text, string $deonticOperator = ''): array {
       // Namespace declaration in XQuery
       $input = 'declare namespace lrml = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"; ';
       // Declare variable used for text search
@@ -66,7 +66,11 @@ class BaseXController extends Controller
 
       // Full text search query
       $input .= 'for $i in //lrml:'.$statement.' ';
-      $input .= 'where $i//lrml:Paraphrase[text() contains text {$text} ] ';
+      if ($deonticOperator === '') {
+          $input .= 'where $i//lrml:Paraphrase[text() contains text {$text} ] ';
+      } else {
+          $input .= 'where $i//lrml:' . $deonticOperator . '//lrml:Paraphrase[text() contains text {$text} ] ';
+      }
       $input .= 'return <result path="{db:path($i)}">{$i}</result>';
 
       // Open Session
