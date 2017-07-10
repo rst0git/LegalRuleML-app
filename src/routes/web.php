@@ -29,7 +29,6 @@ Route::delete('doc/{id}/delete', 'DocumentsController@destroy')->name('doc_delet
                                                                ->middleware('auth');
 
 Route::get('search', 'SearchController@index')->name('search');
-Route::post('search', 'SearchController@search')->name('search_post');
 
 Auth::routes();
 
