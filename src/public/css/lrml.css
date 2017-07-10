@@ -47,6 +47,8 @@
     margin: 15px auto;
     padding-left: 15px;
     padding-right: 15px;
+    background: white;
+    border: 3px double black;
 }
 
 .Statements {
