@@ -59,8 +59,12 @@ class SearchController extends Controller
       }
 
       $text = $request->input('search');
+      $advanced = isset($request->advanced) ?? false;
 
-      $XML_results = BaseXController::full_text_search($statement, $text, $deonticOperator);
+      $XML_results = BaseXController::full_text_search($statement,
+                                                       $text,
+                                                       $advanced,
+                                                       $deonticOperator);
       $HTML_results = [];
       foreach ($XML_results as $result) {
         $path = $result["path"];

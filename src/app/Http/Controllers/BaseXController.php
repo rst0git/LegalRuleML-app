@@ -59,18 +59,23 @@ class BaseXController extends Controller
     }
 
     // Search within BaseX
-    public static function full_text_search(string $statement, string $text, string $deonticOperator = ''): array {
+    public static function full_text_search(string $statement,
+                                            string $text,
+                                            bool $advanced,
+                                            string $deonticOperator = ''): array {
       // Namespace declaration in XQuery
       $input = 'declare namespace lrml = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"; ';
       // Declare variable used for text search
       $input .= 'declare variable $text external;  ';
 
+      $query = $advanced ?  $text : '{$text}';
+
       // Full text search query
       $input .= 'for $i in //lrml:'.$statement.' ';
       if ($deonticOperator === '') {
-          $input .= 'where $i//lrml:Paraphrase[text() contains text {$text} ] ';
+          $input .= 'where $i//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
       } else {
-          $input .= 'where $i//lrml:' . $deonticOperator . '//lrml:Paraphrase[text() contains text {$text} ] ';
+          $input .= 'where $i//lrml:' . $deonticOperator . '//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
       }
       $input .= 'return <result path="{db:path($i)}">{$i}</result>';
 
@@ -84,9 +89,14 @@ class BaseXController extends Controller
       $query->bind('text', $text);
 
       // Get query results
-      $XMLresults = [];
-      while ($query->more()) {
-        $XMLresults[] = $query->next();
+      try {
+        $XMLresults = [];
+        while ($query->more()) {
+          $XMLresults[] = $query->next();
+        }
+      } catch (\Exception $e) {
+        // Return empty array if the query has faild
+          return array();
       }
 
       // Close query instance
