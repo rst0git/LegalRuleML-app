@@ -24,7 +24,9 @@
             @foreach ($data['query_results'] as $result)
                 <li>
                     <a href="{{ $result['url'] }}">{{ $result['name'] }}</a>:
-                    {!! $result['html'] !!}
+                    <div class="excerpt">
+                        {!! $result['html'] !!}
+                    </div>
                 </li>
             @endforeach
         </ul>

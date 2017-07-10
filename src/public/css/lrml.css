@@ -7,6 +7,12 @@
     font-family: sans-serif;
 }
 
+.excerpt, .LegalRuleML {
+    color: #000;
+    font-family: Georgia, serif;
+    font-size: 11pt;
+}
+
 /* actual LRML elements below this line */
 
 .LegalRuleML{
@@ -14,9 +20,6 @@
     margin: 15px auto;
     padding-left: 15px;
     padding-right: 15px;
-    color: #000;
-    font-family: Georgia, serif;
-    font-size: 11pt;
 }
 
 .Statements {
