@@ -76,7 +76,7 @@ class BaseXController extends Controller
       $query = $advanced ?  $text : '{$text}';
 
       $input .= 'for $i in ';
-      if ($statement == 'any') {
+      if ($statement === '') {
           $input .= '//self::lrml:ConstitutiveStatement ';
           $input .= '| //self::lrml:FactualStatement ';
           $input .= '| //self::lrml:PenaltyStatement ';

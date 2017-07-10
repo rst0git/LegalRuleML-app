@@ -20,7 +20,7 @@ class SearchController extends Controller
     */
 
     const STATEMENT_KINDS = [
-        'any' => '(any statement type)',
+        '' => '(any statement type)',
         'ConstitutiveStatement' => 'constitutive',
         'FactualStatement' => 'factual',
         'PenaltyStatement' => 'penalty',
@@ -36,7 +36,7 @@ class SearchController extends Controller
     ];
 
     public function index(Request $request) {
-        if ($request->input('statement') === NULL) {
+        if (!$request->exists('statement')) {
             return view('search')->with('data', [
                 'kinds' => self::STATEMENT_KINDS,
                 'operator_kinds' => self::OPERATOR_KINDS,
@@ -44,7 +44,7 @@ class SearchController extends Controller
             ]);
         }
 
-        $statement = $request->input('statement');
+        $statement = $request->input('statement') ?? '';
         if (!isset(self::STATEMENT_KINDS[$statement])) {
             return response('', 400);
         }
