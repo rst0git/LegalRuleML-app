@@ -52,7 +52,7 @@ class SearchController extends Controller
         }
 
         $text = $request->input('search');
-        $advanced = isset($request->advanced) ?? false;
+        $advanced = isset($request->advanced);
 
         $XML_results = BaseXController::full_text_search($statement,
                                                          $text,
