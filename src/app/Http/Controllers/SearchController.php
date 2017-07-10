@@ -28,7 +28,7 @@ class SearchController extends Controller
     ];
 
     const OPERATOR_KINDS = [
-        '' => '(no deontic operator)',
+        '' => '(any deontic operator)',
         'Obligation' => 'obligation',
         'Permission' => 'permission',
         'Prohibition' => 'prohibition'
