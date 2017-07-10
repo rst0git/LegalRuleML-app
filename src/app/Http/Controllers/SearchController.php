@@ -53,14 +53,14 @@ class SearchController extends Controller
       if (!isset(self::STATEMENT_KINDS[$statement])) {
         return response('', 400);
       }
-      $deonticOperator = $request->input('deontic_operator');
+      $deonticOperator = $request->input('deontic_operator') ?? '';
       if (!isset(self::OPERATOR_KINDS[$deonticOperator])) {
         return response('', 400);
       }
 
       $text = $request->input('search');
 
-      $XML_results = BaseXController::full_text_search($statement, $text, $deonticOperator or '');
+      $XML_results = BaseXController::full_text_search($statement, $text, $deonticOperator);
       $HTML_results = [];
       foreach ($XML_results as $result) {
         $path = $result["path"];
