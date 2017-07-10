@@ -95,8 +95,8 @@ class BaseXController extends Controller
           $XMLresults[] = $query->next();
         }
       } catch (\Exception $e) {
-        // Return empty array if the query has faild
-          return array();
+        // Return error message if the query has faild
+          return ['error' => $e->getMessage()];
       }
 
       // Close query instance

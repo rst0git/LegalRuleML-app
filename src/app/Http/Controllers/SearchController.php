@@ -65,6 +65,14 @@ class SearchController extends Controller
                                                        $text,
                                                        $advanced,
                                                        $deonticOperator);
+       if(!empty($XML_results['error'])) {
+         return view('search')->with('data', [
+           'search' => $text,
+           'query_error_message' => $XML_results['error'],
+           'kinds' => self::STATEMENT_KINDS,
+           'operator_kinds' => self::OPERATOR_KINDS
+         ]);
+       }
       $HTML_results = [];
       foreach ($XML_results as $result) {
         $path = $result["path"];

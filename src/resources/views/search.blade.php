@@ -52,6 +52,11 @@
                 </li>
             @endforeach
         </ul>
+    @elseif(!empty($data['query_error_message']))
+      <div class="">
+        <h5>The requested query could not be executed:</h5>
+        <span>{{$data['query_error_message']}}</span>
+      </div>
     @else
       <span>There are no results that match your search.</span>
     @endif
