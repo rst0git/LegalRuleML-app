@@ -77,7 +77,11 @@ class BaseXController extends Controller
       } else {
           $input .= 'where $i//lrml:' . $deonticOperator . '//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
       }
-      $input .= 'return <result path="{db:path($i)}">{$i}</result>';
+      $input .= 'let $doc := doc(concat(db:name($i), "/", db:path($i))) ';
+      $input .= 'let $keyref := concat("#", normalize-space($i/@key)) ';
+      $input .= 'let $overridden := $doc//lrml:Override[normalize-space(@under)=$keyref]/@over ';
+      $input .= 'let $overriding := $doc//lrml:Override[normalize-space(@over)=$keyref]/@under ';
+      $input .= 'return <result path="{db:path($i)}" overridden="{$overridden}" overriding="{$overriding}">{$i}</result>';
 
       // Open Session
       $session = BaseXController::get_session();
@@ -112,9 +116,25 @@ class BaseXController extends Controller
         if ($lrml instanceof \DOMText) {
             $lrml = $lrml->nextSibling;
         }
+        // Transform XQuery overridden/overrides strings into neat arrays
+        // of the format [$mainStatementKey => [$relatedStatementKey1, ...]]
+        foreach (["overridden", "overriding"] as $name) {
+            $string = $result->getAttribute($name);
+            $$name = [];
+            if ($string !== '') {
+                $key = $lrml->getAttribute("key");
+                $keys = \array_map(function (string $key): string {
+                    return \trim(\ltrim($key, "#"));
+                // split by whitespace, except if at the start or end of string
+                }, \preg_split('/(?!^)\s+(?!$)/', $string));
+                $$name[$key] = $keys;
+            }
+        }
         $results[] = [
           "path" => $result->getAttribute("path"),
-          "lrml" => $lrml
+          "lrml" => $lrml,
+          "overridden" => $overridden,
+          "overriding" => $overriding
         ];
       }
 

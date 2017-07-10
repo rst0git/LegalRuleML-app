@@ -77,7 +77,7 @@ class SearchController extends Controller
       foreach ($XML_results as $result) {
         $path = $result["path"];
         $url = route('doc_show', ['title' => $path]);
-        $html = Converter::DOM_to_html($result["lrml"], $url);
+        $html = Converter::DOM_to_html($result["lrml"], $url, $result["overriding"], $result["overridden"]);
         $HTML_results[] = [
             "name" => $path,
             "url" => $url,

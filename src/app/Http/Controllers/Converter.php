@@ -172,8 +172,10 @@ class Converter extends Controller
       return $convertor->htmlDoc->saveHTML($html);
     }
 
-    public static function DOM_to_html(\DOMElement $xml, string $url = ""): string {
+    public static function DOM_to_html(\DOMElement $xml, string $url = "", array $overriding = [], array $overridden = []): string {
       $convertor = new self($url);
+      $convertor->overriding = $overriding;
+      $convertor->overridden = $overridden;
       $html = $convertor->toHTML($xml);
       return $convertor->htmlDoc->saveHTML($html);
     }
