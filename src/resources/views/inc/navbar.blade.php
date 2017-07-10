@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url(route('home')) }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
@@ -19,8 +19,8 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-              <li><a href="/doc">Documents</a></li>
-              <li><a href="/search">Search</a></li>
+              <li><a href={{route('doc')}}>Documents</a></li>
+              <li><a href="{{route('search')}}">Search</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -30,7 +30,7 @@
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
                     <li>
-                      <a href="/doc/upload">Upload Document</a>
+                      <a href={{route('doc_upload')}}>Upload Document</a>
                     </li>
                     <li><a href="{{ route('register') }}">Create account</a></li>
 

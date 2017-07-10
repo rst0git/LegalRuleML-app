@@ -11,18 +11,26 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index')->name('home');
 
-Route::get('doc', 'DocumentsController@index');
-Route::get('doc/upload', 'DocumentsController@upload')->middleware('auth');;
-Route::post('doc/upload', 'DocumentsController@store')->middleware('auth');;
-Route::get('doc/show/{title}', 'DocumentsController@show');
-Route::get('doc/{id}/download', 'DocumentsController@download');
-Route::delete('doc/{id}/delete', 'DocumentsController@destroy')->middleware('auth');;
+Route::get('doc', 'DocumentsController@index')->name('doc');
 
-Route::get('search', 'SearchController@index');
-Route::post('search', 'SearchController@search');
+Route::get('doc/upload', 'DocumentsController@upload')->name('doc_upload')
+                                                      ->middleware('auth');
+
+Route::post('doc/upload', 'DocumentsController@store')->name('doc_upload_post')
+                                                      ->middleware('auth');
+
+Route::get('doc/show/{title}', 'DocumentsController@show')->name('doc_show');
+
+Route::get('doc/{id}/download', 'DocumentsController@download')->name('doc_download');
+
+Route::delete('doc/{id}/delete', 'DocumentsController@destroy')->name('doc_delete')
+                                                               ->middleware('auth');
+
+Route::get('search', 'SearchController@index')->name('search');
+Route::post('search', 'SearchController@search')->name('search_post');
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

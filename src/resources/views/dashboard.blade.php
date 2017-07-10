@@ -12,15 +12,15 @@
                     You are logged in!
                   </h4>
                   <ul class="dashboard">
-                    <a href="/doc"><li>
+                    <a href={{route('doc')}}><li>
                       <span class="glyphicon glyphicon-list-alt"></span>
                       <span class="dashboard-title">Browse documents</span>
                     </li></a>
-                    <a href="/doc"><li>
+                    <a href={{route('search')}}><li>
                       <span class="glyphicon glyphicon-search"></span>
                       <span class="dashboard-title">Search</span>
                     </li></a>
-                    <a href="/doc/upload"><li>
+                    <a href={{route('doc_upload')}}><li>
                       <span class="glyphicon glyphicon-upload"></span>
                       <span class="dashboard-title">Upload new document</span>
                     </li></a>

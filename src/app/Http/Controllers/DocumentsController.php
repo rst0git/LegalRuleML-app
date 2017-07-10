@@ -51,7 +51,7 @@ class DocumentsController extends Controller
         // Show error if no files are submitted
         if(is_null($files))
         {
-          return redirect('/doc/upload')->withInput()->withErrors("Please select file!");
+          return redirect(route('doc_upload'))->withInput()->withErrors("Please select file!");
         }
 
         // Making counting of uploaded images
@@ -88,17 +88,17 @@ class DocumentsController extends Controller
               $new_doc->user_id = $user_id;
               $new_doc->save();
             } else {
-              return redirect('/doc')->with('error', 'File "'.$filename.'" could not be converted to HTML.');
+              return redirect(route('doc'))->with('error', 'File "'.$filename.'" could not be converted to HTML.');
             }
           }
         }
         if($uploadcount == $file_count)
         {
-           return redirect('/doc')->with('success', 'Upload successfully');
+           return redirect(route('doc'))->with('success', 'Upload successfully');
         }
         else
         {
-           return redirect('/doc/upload')->withInput()->withErrors($validator);
+           return redirect(route('doc_upload'))->withInput()->withErrors($validator);
         }
 
       }
@@ -109,7 +109,7 @@ class DocumentsController extends Controller
         $doc = Document::where('title', $title)->first();
         if (is_null($doc))
         {
-          return redirect('/doc')->with('error', 'Document could not be found.');
+          return redirect(route('doc'))->with('error', 'Document could not be found.');
         }
         $data = [
           'doc' => $doc,
@@ -128,7 +128,7 @@ class DocumentsController extends Controller
         $doc = Document::find($id);
         if (is_null($doc))
         {
-          return redirect('/doc')->with('error', 'Document could not be found.');
+          return redirect(route('doc'))->with('error', 'Document could not be found.');
         }
 
         $pathToFile= public_path().DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR.$doc->filename;
@@ -145,7 +145,7 @@ class DocumentsController extends Controller
 
         // Show error message if record does not exist
         if (is_null($doc)) {
-          return redirect('/doc')->with('error', 'Document could not be found.');
+          return redirect(route('doc'))->with('error', 'Document could not be found.');
         }
 
         // Delete from BaseX
@@ -154,6 +154,6 @@ class DocumentsController extends Controller
         // Delete record
         $doc->delete();
 
-        return redirect('/doc')->with('success', 'Document deleted.');
+        return redirect(route('doc'))->with('success', 'Document deleted.');
       }
 }

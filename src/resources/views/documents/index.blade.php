@@ -22,7 +22,7 @@
       {{$data['docs']->links()}}
     @else
       @if (!Auth::guest())
-        <a class="btn btn-primary" href="/doc/upload">Add new document</a>
+        <a class="btn btn-primary" href={{route('doc_upload')}}>Add new document</a>
       @endif
       <div class="container text-center">
         No documents have been uploaded.
