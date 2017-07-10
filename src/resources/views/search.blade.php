@@ -3,7 +3,7 @@
 @section('content')
 <h3>Search</h3>
 <div class="well">
-  {!!  Form::open(['action' => 'SearchController@search', 'method' => 'POST']) !!}
+  {!!  Form::open(['action' => 'SearchController@index', 'method' => 'GET']) !!}
       <div class="form-group">
           {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Search for ...']) !!}
       </div>
