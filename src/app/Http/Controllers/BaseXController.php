@@ -66,8 +66,16 @@ class BaseXController extends Controller
                                             bool $ignoreSearchTerms = FALSE): array {
       // Namespace declaration in XQuery
       $input = 'declare namespace lrml = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"; ';
-      // Declare variable used for text search
-      $input .= 'declare variable $text external;  ';
+
+      // Use bind variable to pass the user query only:
+      // - if the user query is not ignored
+      // - if the adnvanced search is NOT enebled
+      $use_bind_variable = $ignoreSearchTerms || !$advanced;
+
+      if($use_bind_variable){
+        // Declare variable used for text search
+        $input .= 'declare variable $text external;  ';
+      }
 
       $query = $advanced ?  $text : '{$text}';
 
@@ -82,23 +90,47 @@ class BaseXController extends Controller
       }
 
       // Full text search query
-      $input .= 'for $i in //lrml:'.$statement.' ';
+
       if (!$ignoreSearchTerms) {
+        // Use the user's query
           if ($deonticOperator === '') {
+              // If deontic operator is not specified,
+              // in the text of Paraphrase nodes under this statement.
+              $input .= 'for $i in //lrml:'.$statement.' ';
               $input .= 'where $i//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
           } else {
-              $input .= 'where $i//lrml:' . $deonticOperator . '//lrml:Paraphrase[text() contains text ' . $query . ' ] ';
+              // If deontic element is specified, get the child.
+              // element "Paraphrase" and search in the text.
+              $input .= 'for $i in //lrml:'.$statement.'//lrml:' . $deonticOperator.' ';
+              $input .= 'where $i/lrml:Paraphrase[text() contains text ' . $query . ' ] ';
           }
-      } else {
-          if ($deonticOperator !== '') {
-              $input .= 'where $i//lrml:' . $deonticOperator . ' ';
-          }
+      } elseif ($deonticOperator !== '') {
+          // Do not use the user's search query.
+          // Filter the results by $statement and $deonticOperator.
+          $input .= 'for $i in //lrml:'.$statement.'//lrml:' . $deonticOperator . ' ';
       }
+      else {
+          // Do not use the user's search query
+          // Filter the results only by $statement.
+          $input .= 'for $i in //lrml:'.$statement.' ';
+      }
+
+      if ($deonticOperator === ''){
+        // The flor query is search for statement nodes
+        $input .= 'let $statementNode := $i ';
+      }
+      else {
+        // The $i element is the paraphrase of a node to
+        // get the statement node get the first ancestor
+        // with @key attribute.
+        $input .= 'let $statementNode := $i/ancestor::*[@key][1] ';
+      }
+
       $input .= 'let $doc := doc(concat(db:name($i), "/", db:path($i))) ';
-      $input .= 'let $keyref := concat("#", normalize-space($i/@key)) ';
+      $input .= 'let $keyref := concat("#", normalize-space($statementNode/@key)) ';
       $input .= 'let $overridden := $doc//lrml:Override[normalize-space(@under)=$keyref]/@over ';
       $input .= 'let $overriding := $doc//lrml:Override[normalize-space(@over)=$keyref]/@under ';
-      $input .= 'return <result path="{db:path($i)}" overridden="{$overridden}" overriding="{$overriding}">{$i}</result>';
+      $input .= 'return <result path="{db:path($i)}" overridden="{$overridden}" overriding="{$overriding}">{$statementNode}</result>';
 
       // Open Session
       $session = BaseXController::get_session();
@@ -106,9 +138,10 @@ class BaseXController extends Controller
       // Create query instance
       $query = $session->query($input);
 
-      // Bind query variable - Send the user string to BaseX
-      $query->bind('text', $text);
-
+      if($use_bind_variable){
+        // Bind query variable - Send the user string to BaseX
+        $query->bind('text', $text);
+      }
       // Get query results
       try {
         $XMLresults = [];
