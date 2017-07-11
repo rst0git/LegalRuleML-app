@@ -17,7 +17,7 @@
     </div>
     <hr />
     <div class="row">
-      <p>{!! $data['html'] or $data['doc']->html !!}</p>
+      {!! $data['html'] ?: $data['doc']->html !!}
     </div>
   @endif
 @endsection
