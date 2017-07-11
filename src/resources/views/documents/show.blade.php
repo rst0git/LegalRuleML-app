@@ -17,7 +17,24 @@
     </div>
     <hr />
     <div class="row">
-      {!! $data['html'] ?: $data['doc']->html !!}
+      <div class="col-md-8 col-md-offset-2">
+        {!! $data['html'] ?: $data['doc']->html !!}
+      </div>
+      <div class="col-md-2 hidden-sm hidden-xs">
+       <ul class="nav nav-pills nav-stacked legend" data-spy="affix" data-offset-top="205">
+            <li><span class="ConstitutiveStatement">Constitutive</span></li>
+            <li><span class="FactualStatement">Factual</span></li>
+            <li><span class="PenaltyStatement">Penalty</span></li>
+            <li><span class="PrescriptiveStatement">Prescriptive
+                <ul>
+                    <li><span class="Obligation">Obligation</span></li>
+                    <li><span class="Permission">Permission</span></li>
+                    <li><span class="Prohibition">Prohibition</span></li>
+                </ul>
+            </span></li>
+            <li><span class="ReparationStatement">Reparation</span></li>
+          </ul>
+      </div>
     </div>
   @endif
 @endsection

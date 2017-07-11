@@ -53,3 +53,24 @@
   text-align: center;
   word-wrap: break-word;
 }
+
+.legend {
+  width: 165px;
+  top: 0;
+  padding-top: 50px;
+  color: #000;
+  font-family: Georgia, serif;
+  font-size: 11pt;
+}
+
+.legend span{
+  border-color: #000;
+}
+
+.legend span:hover{
+  border-width: 1px !important;
+}
+
+.legend span:hover::after{
+  content: none !important;
+}
