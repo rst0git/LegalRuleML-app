@@ -59,14 +59,13 @@ class BaseXController extends Controller
     }
 
     // Search within BaseX
-    public static function full_text_search(string $statement,
-                                            string $text,
-                                            bool $advanced,
-                                            string $deonticOperator = '',
-                                            bool $ignoreSearchTerms = FALSE): array {
+    public static function full_text_search(string $statement = '',
+                                            string $text = '',
+                                            bool $advanced = FALSE,
+                                            string $deonticOperator = ''): array {
       $input = 'declare namespace lrml = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"; ';
 
-      $use_bind_variable = $ignoreSearchTerms || !$advanced;
+      $use_bind_variable = ($text !== '') || !$advanced;
 
       if($use_bind_variable){
         // Declare variable used for text search
@@ -85,12 +84,12 @@ class BaseXController extends Controller
       } else {
           $input .= '//lrml:' . $statement . ' ';
       }
-      if ($deonticOperator !== '' || !$ignoreSearchTerms) {
+      if ($deonticOperator !== '' || $text !== '') {
           $input .= 'where $i';
           if ($deonticOperator !== '') {
               $input .= '//lrml:' . $deonticOperator;
           }
-          if (!$ignoreSearchTerms) {
+          if ($text !== '') {
               $input .= '//lrml:Paraphrase[text() contains text ' . $query . ' ]';
           }
           $input .= ' ';

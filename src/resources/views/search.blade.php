@@ -5,8 +5,7 @@
 <div class="well">
   {!!  Form::open(['action' => 'SearchController@index', 'method' => 'GET']) !!}
       <div class="form-group">
-          <label>{!! Form::radio('all', 'yes', $data['all']); !!} All statements</label><br>
-          <label>{!! Form::radio('all', 'no', !$data['all']); !!} Statements containing terms: </label>
+          <label>Statements containing terms (leave blank to find all):</label> 
           {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Search for ...']) !!}
           <label>{!! Form::checkbox('advanced', 'advanced'); !!} Enable Advanced Search</label>
            <a href="#" onclick="$('#advanced_search_info').slideToggle();">
@@ -40,25 +39,27 @@
     </div>
   </div>
 </div>
-  <div class="container well">
-    @if(!empty($data['query_results']))
-        <ul>
-            @foreach ($data['query_results'] as $result)
-                <li>
-                    <a href="{{ $result['url'] }}">{{ $result['name'] }}</a>:
-                    <div class="excerpt">
-                        {!! $result['html'] !!}
-                    </div>
-                </li>
-            @endforeach
-        </ul>
-    @elseif(!empty($data['query_error_message']))
-      <div class="">
-        <h5>The requested query could not be executed:</h5>
-        <span>{{$data['query_error_message']}}</span>
-      </div>
-    @else
-      <span>There are no results that match your search.</span>
-    @endif
-  </div>
+  @if (empty($data['no_search']))
+    <div class="container well">
+      @if(!empty($data['query_results']))
+          <ul>
+              @foreach ($data['query_results'] as $result)
+                  <li>
+                      <a href="{{ $result['url'] }}">{{ $result['name'] }}</a>:
+                      <div class="excerpt">
+                          {!! $result['html'] !!}
+                      </div>
+                  </li>
+              @endforeach
+          </ul>
+      @elseif(!empty($data['query_error_message']))
+        <div class="">
+          <h5>The requested query could not be executed:</h5>
+          <span>{{$data['query_error_message']}}</span>
+        </div>
+      @else
+        <span>There are no results that match your search.</span>
+      @endif
+    </div>
+  @endif
 @endsection

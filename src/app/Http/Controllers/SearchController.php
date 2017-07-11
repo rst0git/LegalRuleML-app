@@ -40,7 +40,7 @@ class SearchController extends Controller
             return view('search')->with('data', [
                 'kinds' => self::STATEMENT_KINDS,
                 'operator_kinds' => self::OPERATOR_KINDS,
-                'all' => FALSE
+                'no_search' => TRUE
             ]);
         }
 
@@ -55,17 +55,14 @@ class SearchController extends Controller
 
         $text = $request->input('search') ?? '';
         $advanced = isset($request->advanced);
-        $all = ($request->input('all') ?? "no") === "yes";
 
         $XML_results = BaseXController::full_text_search($statement,
                                                          $text,
                                                          $advanced,
-                                                         $deonticOperator,
-                                                         $all);
+                                                         $deonticOperator);
         if(!empty($XML_results['error'])) {
             return view('search')->with('data', [
                 'search' => $text,
-                'all' => $all,
                 'query_error_message' => $XML_results['error'],
                 'kinds' => self::STATEMENT_KINDS,
                 'operator_kinds' => self::OPERATOR_KINDS
@@ -89,8 +86,7 @@ class SearchController extends Controller
             'query_results' => $HTML_results,
             'statement' => $statement,
             'deontic_operator' => $deonticOperator,
-            'search' => $text,
-            'all' => $all
+            'search' => $text
         ];
 
         return view('search')->with('data', $data);
