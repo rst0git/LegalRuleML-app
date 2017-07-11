@@ -79,3 +79,7 @@
 .no-bg-color{
   background-color: inherit;
 }
+
+#search-results{
+  padding-left: 5px;
+}

@@ -5,7 +5,7 @@
 <div class="well">
   {!!  Form::open(['action' => 'SearchController@index', 'method' => 'GET']) !!}
       <div class="form-group">
-          <label>Statements containing terms (leave blank to find all):</label> 
+          <label>Statements containing terms (leave blank to find all):</label>
           {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Search for ...']) !!}
           <label>{!! Form::checkbox('advanced', 'advanced'); !!} Enable Advanced Search</label>
            <a href="#" onclick="$('#advanced_search_info').slideToggle();">
@@ -40,9 +40,9 @@
   </div>
 </div>
   @if (empty($data['no_search']))
-    <div class="container well">
+    <div class="well">
       @if(!empty($data['query_results']))
-          <ul>
+          <ul id="search-results">
               @foreach ($data['query_results'] as $result)
                   <li>
                       <a href="{{ $result['url'] }}">{{ $result['name'] }}</a>:
