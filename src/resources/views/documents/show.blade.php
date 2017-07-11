@@ -22,17 +22,17 @@
       </div>
       <div class="col-md-2 hidden-sm hidden-xs">
        <ul class="nav nav-pills nav-stacked legend" data-spy="affix" data-offset-top="205">
-            <li><span class="ConstitutiveStatement">Constitutive</span></li>
-            <li><span class="FactualStatement">Factual</span></li>
-            <li><span class="PenaltyStatement">Penalty</span></li>
-            <li><span class="PrescriptiveStatement">Prescriptive
+            <li><span onclick="toggleBgColor(this);" class="ConstitutiveStatement">Constitutive</span></li>
+            <li><span onclick="toggleBgColor(this);" class="FactualStatement">Factual</span></li>
+            <li><span onclick="toggleBgColor(this);" class="PenaltyStatement">Penalty</span></li>
+            <li><span onclick="toggleBgColor(this);" class="PrescriptiveStatement">Prescriptive
                 <ul>
-                    <li><span class="Obligation">Obligation</span></li>
-                    <li><span class="Permission">Permission</span></li>
-                    <li><span class="Prohibition">Prohibition</span></li>
+                    <li><span onclick="toggleBgColor(this);" class="Obligation">Obligation</span></li>
+                    <li><span onclick="toggleBgColor(this);" class="Permission">Permission</span></li>
+                    <li><span onclick="toggleBgColor(this);" class="Prohibition">Prohibition</span></li>
                 </ul>
             </span></li>
-            <li><span class="ReparationStatement">Reparation</span></li>
+            <li><span onclick="toggleBgColor(this);" class="ReparationStatement">Reparation</span></li>
           </ul>
       </div>
     </div>
