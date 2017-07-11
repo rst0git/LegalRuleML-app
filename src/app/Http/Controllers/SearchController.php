@@ -46,11 +46,11 @@ class SearchController extends Controller
 
         $statement = $request->input('statement') ?? '';
         if (!isset(self::STATEMENT_KINDS[$statement])) {
-            return response('', 400);
+            $statement = '';
         }
         $deonticOperator = $request->input('deontic_operator') ?? '';
         if (!isset(self::OPERATOR_KINDS[$deonticOperator])) {
-            return response('', 400);
+            $deonticOperator = '';
         }
 
         $text = $request->input('search') ?? '';
