@@ -95,11 +95,13 @@ class BaseXController extends Controller
           $input .= ' ';
       }
 
+
       $input .= 'let $doc := doc(concat(db:name($i), "/", db:path($i))) ';
       $input .= 'let $keyref := concat("#", normalize-space($i/@key)) ';
+      $input .= 'let $reparations := $doc//lrml:ReparationStatement//lrml:toPrescriptiveStatement[normalize-space(@keyref)=$keyref]/../../@key ';
       $input .= 'let $overridden := $doc//lrml:Override[normalize-space(@under)=$keyref]/@over ';
       $input .= 'let $overriding := $doc//lrml:Override[normalize-space(@over)=$keyref]/@under ';
-      $input .= 'return <result path="{db:path($i)}" overridden="{$overridden}" overriding="{$overriding}">{$i}</result>';
+      $input .= 'return <result reparations="{$reparations}" path="{db:path($i)}" overridden="{$overridden}" overriding="{$overriding}">{$i}</result>';
 
       // Open Session
       $session = BaseXController::get_session();
@@ -137,7 +139,7 @@ class BaseXController extends Controller
         }
         // Transform XQuery overridden/overrides strings into neat arrays
         // of the format [$mainStatementKey => [$relatedStatementKey1, ...]]
-        foreach (["overridden", "overriding"] as $name) {
+        foreach (["overridden", "overriding", "reparations"] as $name) {
             $string = $result->getAttribute($name);
             $$name = [];
             if ($string !== '') {
@@ -153,7 +155,8 @@ class BaseXController extends Controller
           "path" => $result->getAttribute("path"),
           "lrml" => $lrml,
           "overridden" => $overridden,
-          "overriding" => $overriding
+          "overriding" => $overriding,
+          "reparations" => $reparations
         ];
       }
 

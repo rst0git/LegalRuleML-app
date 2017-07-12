@@ -13,8 +13,7 @@
     font-size: 11pt;
 }
 
-.overrides {
-    background-color: #ff6666;
+.overrides, .reparations {
     font-family: sans-serif;
     font-size: small;
     border-top-right-radius: 10px;
@@ -23,20 +22,29 @@
     position: relative; /* line up with border */
     left: -1px;
     top: 1px;
+    margin-top: 2px;
 }
 
-.overrides-list {
+.overrides {
+    background-color: #ff6666;
+}
+
+.reparations {
+    background-color: #BC8F8F;
+}
+
+.key-list {
     list-style-type: none;
     padding: 0;
     display: inline;
 }
-.overrides-list li {
+.key-list li {
     display: inline;
 }
-.overrides-list li::after {
+.key-list li::after {
     content: ', ';
 }
-.overrides-list li:last-child::after {
+.key-list li:last-child::after {
     content: '';
 }
 

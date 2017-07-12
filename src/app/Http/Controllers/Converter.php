@@ -54,6 +54,7 @@ class Converter extends Controller
         $this->url = $url;
         $this->overridden = [];
         $this->overriding = [];
+        $this->reparations = [];;
     }
 
     public function collectOverrides(\DOMDocument $xmlDoc) {
@@ -78,19 +79,32 @@ class Converter extends Controller
             ] as $label => $list) {
                 if ($list !== NULL) {
                     $overrides->appendChild($this->htmlDoc->createTextNode($label));
-                    $ul = $this->htmlDoc->createElement('ul');
-                    $ul->setAttribute('class', 'overrides-list');
-                    foreach ($list as $item) {
-                        $li = $this->htmlDoc->createElement('li');
-                        $key = $this->makeKeyElement($item);
-                        $li->appendChild($key);
-                        $ul->appendChild($li);
-                    }
-                    $overrides->appendChild($ul);
+                    $overrides->appendChild($this->makeKeyList($list));
                 }
             }
             $html->appendChild($overrides);
         }
+        if (isset($this->reparations[$key])) {
+            $reparations = $this->htmlDoc->createElement('div');
+            $reparations->setAttribute('class', 'reparations');
+            $label = "Has reparation: ";
+            $list = $this->reparations[$key];
+            $reparations->appendChild($this->htmlDoc->createTextNode($label));
+            $reparations->appendChild($this->makeKeyList($list));
+            $html->appendChild($reparations);
+        }
+    }
+
+    private function makeKeyList(array /*<string>*/ $keys): \DOMElement {
+        $ul = $this->htmlDoc->createElement('ul');
+        $ul->setAttribute('class', 'key-list');
+        foreach ($keys as $item) {
+            $li = $this->htmlDoc->createElement('li');
+            $key = $this->makeKeyElement($item);
+            $li->appendChild($key);
+            $ul->appendChild($li);
+        }
+        return $ul;
     }
 
     private function makeKeyElement(string $key): \DOMElement {
@@ -172,10 +186,11 @@ class Converter extends Controller
       return $convertor->htmlDoc->saveHTML($html);
     }
 
-    public static function DOM_to_html(\DOMElement $xml, string $url = "", array $overriding = [], array $overridden = []): string {
+    public static function DOM_to_html(\DOMElement $xml, string $url = "", array $overriding = [], array $overridden = [], array $reparations = []): string {
       $convertor = new self($url);
       $convertor->overriding = $overriding;
       $convertor->overridden = $overridden;
+      $convertor->reparations = $reparations;
       $html = $convertor->toHTML($xml);
       return $convertor->htmlDoc->saveHTML($html);
     }
