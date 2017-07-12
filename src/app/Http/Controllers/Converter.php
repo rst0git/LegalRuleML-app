@@ -87,11 +87,23 @@ class Converter extends Controller
         if (isset($this->reparations[$key])) {
             $reparations = $this->htmlDoc->createElement('div');
             $reparations->setAttribute('class', 'reparations');
-            $label = "Has reparation: ";
-            $list = $this->reparations[$key];
-            $reparations->appendChild($this->htmlDoc->createTextNode($label));
-            $reparations->appendChild($this->makeKeyList($list));
-            $html->appendChild($reparations);
+            if (isset($this->reparations[$key])) {
+                $reparations->appendChild($this->htmlDoc->createTextNode("Has reparation: "));
+                $reparations->appendChild($this->makeKeyList($this->reparations[$key]));
+                $html->appendChild($reparations);
+            }
+        }
+        if ($this->stripNS($xml->tagName) === 'ReparationStatement') {
+            $xpath = new \DOMXPath($xml->ownerDocument);
+            $nodes = $xpath->evaluate("lrml:Reparation/lrml:toPrescriptiveStatement/@keyref", $xml);
+            if ($nodes->length === 1) {
+                $appliesTo = $this->htmlDoc->createElement('div');
+                $appliesTo->setAttribute('class', 'applies-to');
+                $key = \trim(\ltrim($nodes[0]->value, "#"));
+                $appliesTo->appendChild($this->htmlDoc->createTextNode("Applies to: "));
+                $appliesTo->appendChild($this->makeKeyElement($key));
+                $html->appendChild($appliesTo);
+            }
         }
     }
 
