@@ -57,13 +57,22 @@ class Converter extends Controller
         $this->reparations = [];;
     }
 
-    public function collectOverrides(\DOMDocument $xmlDoc) {
+    public function collectRelations(\DOMDocument $xmlDoc) {
         $overrides = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "Override");
         foreach ($overrides as $override) {
             $over = \trim(\ltrim($override->getAttribute("over"), "#"));
             $under = \trim(\ltrim($override->getAttribute("under"), "#"));
             $this->overridden[$under][] = $over;
             $this->overriding[$over][] = $under;
+        }
+        $applications = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "toPrescriptiveStatement");
+        foreach ($applications as $application) {
+            $prescriptiveKey = \trim(\ltrim($application->getAttribute("keyref"), "#"));
+            $reparation = $application->parentNode->parentNode ?? NULL;
+            if ($reparation !== NULL && $reparation instanceof \DOMElement && $this->stripNS($reparation->tagName) === "ReparationStatement") {
+                $reparationKey = $reparation->getAttribute("key");
+                $this->reparations[$prescriptiveKey][] = $reparationKey;
+            }
         }
     }
 
@@ -193,7 +202,7 @@ class Converter extends Controller
 
 
       $convertor = new self;
-      $convertor->collectOverrides($doc);
+      $convertor->collectRelations($doc);
       $html = $convertor->toHTML($doc->documentElement);
       return $convertor->htmlDoc->saveHTML($html);
     }
