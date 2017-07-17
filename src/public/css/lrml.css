@@ -42,19 +42,22 @@
     padding: 0;
     display: inline;
 }
+
 .key-list li {
     display: inline;
 }
+
 .key-list li::after {
     content: ', ';
 }
+
 .key-list li:last-child::after {
     content: '';
 }
 
 /* actual LRML elements below this line */
 
-.LegalRuleML{
+.LegalRuleML {
     max-width: 800px;
     margin: 15px auto;
     padding-left: 15px;
@@ -71,8 +74,6 @@
     border-style: solid;
     border-width: 1px;
 }
-
-
 
 .ConstitutiveStatement,
 .FactualStatement,
@@ -94,27 +95,25 @@
 .ConstitutiveStatement:hover,
 .FactualStatement:hover,
 .PenaltyStatement:hover,
-/*.PrescriptiveStatement:hover,*/
+    /*.PrescriptiveStatement:hover,*/
 .Obligation:hover,
 .Permission:hover,
 .Prohibition:hover,
-.ReparationStatement:hover
-{
-  border-color: #333;
-  border-width: 2px;
+.ReparationStatement:hover {
+    border-color: #333;
+    border-width: 2px;
 }
 
 .ConstitutiveStatement:hover::after,
 .FactualStatement:hover::after,
 .PenaltyStatement:hover::after,
-/*.PrescriptiveStatement:hover::after,*/
+    /*.PrescriptiveStatement:hover::after,*/
 .Obligation:hover::after,
 .Permission:hover::after,
 .Prohibition:hover::after,
-.ReparationStatement:hover::after
-{
+.ReparationStatement:hover::after {
     background: #333;
-    background: rgba(0,0,0,.8);
+    background: rgba(0, 0, 0, .8);
     border-radius: 2px;
     top: -25px;
     left: 15px;
@@ -124,17 +123,16 @@
     z-index: 98;
 }
 
-
 .ConstitutiveStatement:hover::after {
-  content: "Constitutive Statement" ;
+    content: "Constitutive Statement";
 }
 
 .FactualStatement:hover::after {
-  content: "Factual Statement" ;
+    content: "Factual Statement";
 }
 
 .PenaltyStatement:hover::after {
-  content: "Penalty Statement" ;
+    content: "Penalty Statement";
 }
 
 /*.PrescriptiveStatement:hover::after {
@@ -142,23 +140,23 @@
 }*/
 
 .Obligation:hover::after {
-	content: "Obligation" ;
+    content: "Obligation";
 }
 
 .Permission:hover::after {
-	content: "Permission" ;
+    content: "Permission";
 }
 
 .Prohibition:hover::after {
-	content: "Prohibition" ;
+    content: "Prohibition";
 }
 
 .ReparationStatement:hover:after {
-  content: "Reparation Statement" ;
+    content: "Reparation Statement";
 }
 
 .ConstitutiveStatement {
-    border-color:  	#00008B;
+    border-color: #00008B;
     background-color: #ADD8E6;
 }
 
@@ -167,7 +165,7 @@
     background-color: #b3b3ff;
 }
 
-.PenaltyStatement{
+.PenaltyStatement {
     border-color: #F08080;
     background-color: #FFDAB9;
 }
@@ -179,32 +177,33 @@
 
 .Obligation {
     border-color: #e67300;
-    background-color:	#ffa64d;
+    background-color: #ffa64d;
 }
 
 .Permission {
-	border-color: #669900;
-	background-color: #ccff66;
+    border-color: #669900;
+    background-color: #ccff66;
 }
 
 .Prohibition {
-	border-color: #ffff4d;
-	background-color: #e6e600;
+    border-color: #ffff4d;
+    background-color: #e6e600;
 }
-.ReparationStatement{
+
+.ReparationStatement {
     border-color: #DB7093;
-    background-color:	#BC8F8F;
+    background-color: #BC8F8F;
 }
 
 .Comment {
-  display: block;
-  text-align: center;
-  font-style: oblique;
+    display: block;
+    text-align: center;
+    font-style: oblique;
 }
 
 .Statements .Comment {
-	display: block;
-	text-align: center;
-	font-style: italic;
-	line-height: 2.5em;
+    display: block;
+    text-align: center;
+    font-style: italic;
+    line-height: 2.5em;
 }

@@ -35,12 +35,13 @@ class SearchController extends Controller
         'Prohibition' => 'prohibition'
     ];
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         if (!$request->exists('statement')) {
             return view('search')->with('data', [
                 'kinds' => self::STATEMENT_KINDS,
                 'operator_kinds' => self::OPERATOR_KINDS,
-                'no_search' => TRUE
+                'no_search' => true
             ]);
         }
 
@@ -57,10 +58,10 @@ class SearchController extends Controller
         $advanced = isset($request->advanced);
 
         $XML_results = BaseXController::full_text_search($statement,
-                                                         $text,
-                                                         $advanced,
-                                                         $deonticOperator);
-        if(!empty($XML_results['error'])) {
+            $text,
+            $advanced,
+            $deonticOperator);
+        if (!empty($XML_results['error'])) {
             return view('search')->with('data', [
                 'search' => $text,
                 'query_error_message' => $XML_results['error'],
@@ -72,7 +73,8 @@ class SearchController extends Controller
         foreach ($XML_results as $result) {
             $path = $result["path"];
             $url = route('doc_show', ['title' => $path]);
-            $html = Converter::DOM_to_html($result["lrml"], $url, $result["overriding"], $result["overridden"], $result["reparations"]);
+            $html = Converter::DOM_to_html($result["lrml"], $url, $result["overriding"], $result["overridden"],
+                $result["reparations"]);
             $HTML_results[] = [
                 "name" => $path,
                 "url" => $url,

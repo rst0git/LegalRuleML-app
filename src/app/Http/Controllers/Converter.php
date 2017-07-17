@@ -29,10 +29,10 @@ class Converter extends Controller
     ];
 
     const OMITTED_ELEMENTS = [
-        "Rule" => TRUE,
-        "then" => TRUE,
-        "OverrideStatement" => TRUE,
-        "Override" => TRUE
+        "Rule" => true,
+        "then" => true,
+        "OverrideStatement" => true,
+        "Override" => true
     ];
 
     const SPECIAL_ELEMENTS = [
@@ -49,7 +49,8 @@ class Converter extends Controller
     private $overridden;
     private $overriding;
 
-    private function __construct(string $url = "") {
+    private function __construct(string $url = "")
+    {
         $this->htmlDoc = new \DOMDocument;
         $this->url = $url;
         $this->overridden = [];
@@ -57,7 +58,8 @@ class Converter extends Controller
         $this->reparations = [];;
     }
 
-    public function collectRelations(\DOMDocument $xmlDoc) {
+    public function collectRelations(\DOMDocument $xmlDoc)
+    {
         $overrides = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "Override");
         foreach ($overrides as $override) {
             $over = \trim(\ltrim($override->getAttribute("over"), "#"));
@@ -68,25 +70,26 @@ class Converter extends Controller
         $applications = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "toPrescriptiveStatement");
         foreach ($applications as $application) {
             $prescriptiveKey = \trim(\ltrim($application->getAttribute("keyref"), "#"));
-            $reparation = $application->parentNode->parentNode ?? NULL;
-            if ($reparation !== NULL && $reparation instanceof \DOMElement && $this->stripNS($reparation->tagName) === "ReparationStatement") {
+            $reparation = $application->parentNode->parentNode ?? null;
+            if ($reparation !== null && $reparation instanceof \DOMElement && $this->stripNS($reparation->tagName) === "ReparationStatement") {
                 $reparationKey = $reparation->getAttribute("key");
                 $this->reparations[$prescriptiveKey][] = $reparationKey;
             }
         }
     }
 
-    public function statement_handler(\DOMNode $xml, \DOMNode $html) {
+    public function statement_handler(\DOMNode $xml, \DOMNode $html)
+    {
         $key = $xml->getAttribute("key");
         $html->insertBefore(self::makeKeyElement($key), $html->firstChild);
         if (isset($this->overridden[$key]) || isset($this->overriding[$key])) {
             $overrides = $this->htmlDoc->createElement('div');
             $overrides->setAttribute('class', 'overrides');
             foreach ([
-                "Overriden by: " => $this->overridden[$key] ?? NULL,
-                "Overrides: " => $this->overriding[$key] ?? NULL
-            ] as $label => $list) {
-                if ($list !== NULL) {
+                         "Overriden by: " => $this->overridden[$key] ?? null,
+                         "Overrides: " => $this->overriding[$key] ?? null
+                     ] as $label => $list) {
+                if ($list !== null) {
                     $overrides->appendChild($this->htmlDoc->createTextNode($label));
                     $overrides->appendChild($this->makeKeyList($list));
                 }
@@ -116,7 +119,10 @@ class Converter extends Controller
         }
     }
 
-    private function makeKeyList(array /*<string>*/ $keys): \DOMElement {
+    private function makeKeyList(
+        array /*<string>*/
+        $keys
+    ): \DOMElement {
         $ul = $this->htmlDoc->createElement('ul');
         $ul->setAttribute('class', 'key-list');
         foreach ($keys as $item) {
@@ -128,7 +134,8 @@ class Converter extends Controller
         return $ul;
     }
 
-    private function makeKeyElement(string $key): \DOMElement {
+    private function makeKeyElement(string $key): \DOMElement
+    {
         $keyElement = $this->htmlDoc->createElement("a");
         $keyElement->setAttribute("href", "$this->url#$key");
         $keyElement->setAttribute("class", "key");
@@ -136,16 +143,18 @@ class Converter extends Controller
         return $keyElement;
     }
 
-    public function stripNS(string $xmlTag): string {
+    public function stripNS(string $xmlTag): string
+    {
         // Remove namespace from tag name, if necessary
         $colonPos = strpos($xmlTag, ":");
-        if (FALSE !== $colonPos) {
+        if (false !== $colonPos) {
             $xmlTag = substr($xmlTag, $colonPos + 1);
         }
         return $xmlTag;
     }
 
-    public function childrenToHTML(\DOMNode $xml, \DOMNode $html) {
+    public function childrenToHTML(\DOMNode $xml, \DOMNode $html)
+    {
         foreach ($xml->childNodes as $xmlChild) {
             // Replace XML elements with their children where specified
 
@@ -157,62 +166,73 @@ class Converter extends Controller
         }
     }
 
-    public function toHTML(\DOMNode $xml) {
-      if ($xml instanceof \DOMElement) {
-          $xmlTag = self::stripNS($xml->tagName);
+    public function toHTML(\DOMNode $xml)
+    {
+        if ($xml instanceof \DOMElement) {
+            $xmlTag = self::stripNS($xml->tagName);
 
-          // Map elements to <div>s if we haven't specified otherwise
-          $htmlTag = self::ELEMENT_MAP[$xmlTag] ?? "div";
+            // Map elements to <div>s if we haven't specified otherwise
+            $htmlTag = self::ELEMENT_MAP[$xmlTag] ?? "div";
 
-          $html = $this->htmlDoc->createElement($htmlTag);
-          $html->setAttribute("class", $xmlTag);
+            $html = $this->htmlDoc->createElement($htmlTag);
+            $html->setAttribute("class", $xmlTag);
 
-          // Map XML attributes to appropriate HTML attributes
-          foreach (self::ATTRIBUTE_MAP as $xmlAttrib => $htmlAttrib) {
-              if ($xml->hasAttribute($xmlAttrib)) {
-                  $html->setAttribute($htmlAttrib, $xml->getAttribute($xmlAttrib));
-              }
-          }
+            // Map XML attributes to appropriate HTML attributes
+            foreach (self::ATTRIBUTE_MAP as $xmlAttrib => $htmlAttrib) {
+                if ($xml->hasAttribute($xmlAttrib)) {
+                    $html->setAttribute($htmlAttrib, $xml->getAttribute($xmlAttrib));
+                }
+            }
 
-          self::childrenToHTML($xml, $html);
+            self::childrenToHTML($xml, $html);
 
-          // Use overriding handler function for element content, if any
-          if (isset(self::SPECIAL_ELEMENTS[$xmlTag])) {
-              $this->{self::SPECIAL_ELEMENTS[$xmlTag]}($xml, $html);
-          }
-          return $html;
-      } else if ($xml instanceof \DOMText) {
-          return $this->htmlDoc->createTextNode($xml->wholeText);
-      } else if ($xml instanceof \DOMComment) {
-          return $this->htmlDoc->createComment($xml->data);
-      } else {
-          die("Unhandled DOMNode kind: " . get_class($xml) . PHP_EOL);
-      }
+            // Use overriding handler function for element content, if any
+            if (isset(self::SPECIAL_ELEMENTS[$xmlTag])) {
+                $this->{self::SPECIAL_ELEMENTS[$xmlTag]}($xml, $html);
+            }
+            return $html;
+        } else {
+            if ($xml instanceof \DOMText) {
+                return $this->htmlDoc->createTextNode($xml->wholeText);
+            } else {
+                if ($xml instanceof \DOMComment) {
+                    return $this->htmlDoc->createComment($xml->data);
+                } else {
+                    die("Unhandled DOMNode kind: " . get_class($xml) . PHP_EOL);
+                }
+            }
+        }
     }
 
-    public static function xml_to_html($infileContent, $is_file=true): string {
-      $doc = new \DOMDocument();
+    public static function xml_to_html($infileContent, $is_file = true): string
+    {
+        $doc = new \DOMDocument();
 
-      if ($is_file == true) {
-        $doc->load($infileContent);
-      }
-      else {
-        $doc->loadXML($infileContent);
-      }
+        if ($is_file == true) {
+            $doc->load($infileContent);
+        } else {
+            $doc->loadXML($infileContent);
+        }
 
 
-      $convertor = new self;
-      $convertor->collectRelations($doc);
-      $html = $convertor->toHTML($doc->documentElement);
-      return $convertor->htmlDoc->saveHTML($html);
+        $convertor = new self;
+        $convertor->collectRelations($doc);
+        $html = $convertor->toHTML($doc->documentElement);
+        return $convertor->htmlDoc->saveHTML($html);
     }
 
-    public static function DOM_to_html(\DOMElement $xml, string $url = "", array $overriding = [], array $overridden = [], array $reparations = []): string {
-      $convertor = new self($url);
-      $convertor->overriding = $overriding;
-      $convertor->overridden = $overridden;
-      $convertor->reparations = $reparations;
-      $html = $convertor->toHTML($xml);
-      return $convertor->htmlDoc->saveHTML($html);
+    public static function DOM_to_html(
+        \DOMElement $xml,
+        string $url = "",
+        array $overriding = [],
+        array $overridden = [],
+        array $reparations = []
+    ): string {
+        $convertor = new self($url);
+        $convertor->overriding = $overriding;
+        $convertor->overridden = $overridden;
+        $convertor->reparations = $reparations;
+        $html = $convertor->toHTML($xml);
+        return $convertor->htmlDoc->saveHTML($html);
     }
 }

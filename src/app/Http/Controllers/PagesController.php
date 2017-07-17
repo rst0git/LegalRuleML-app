@@ -17,7 +17,8 @@ class PagesController extends Controller
     |
     */
 
-    public function index() {
+    public function index()
+    {
         if (Auth::check()) {
             return redirect(route('dashboard'));
         }

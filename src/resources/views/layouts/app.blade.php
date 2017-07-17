@@ -16,16 +16,16 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
-  @include('inc.navbar')
-    <div id="app">
-      @include('inc.messages')
-      <div class="container">
+@include('inc.navbar')
+<div id="app">
+    @include('inc.messages')
+    <div class="container">
         @yield('content')
-      </div>
     </div>
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

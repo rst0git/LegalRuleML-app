@@ -13,9 +13,9 @@ class AddUserIdToDocuments extends Migration
      */
     public function up()
     {
-      Schema::table('documents', function($table){
-        $table->integer('user_id');
-      });
+        Schema::table('documents', function ($table) {
+            $table->integer('user_id');
+        });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddUserIdToDocuments extends Migration
      */
     public function down()
     {
-      Schema::table('documents', function($table){
-        $table->dropColumn('user_id');
-      });
+        Schema::table('documents', function ($table) {
+            $table->dropColumn('user_id');
+        });
     }
 }
