@@ -1,4 +1,16 @@
-## Getting Started
+# LRML Search
+
+## Overview
+
+LRML Search is a web application for storing, viewing and searching LegalRuleML documents, developed as part of the LegalRuleMLParl project. Under the hood, it is a PHP 7.0 Laravel web app which uses BaseX for XML storage and querying, and PostgreSQL for all other data storage.
+
+## Authorship and copyright
+
+LRML Search was written by Radostin Stoyanov and Andrea Faulds. Copyright © 2017 University of Aberdeen.
+
+The `BaseXClient.php` is sourced from [the BaseX repository](https://github.com/BaseXdb/basex/blob/master/basex-api/src/main/php/BaseXClient.php), and is licensed under the BSD license. Copyright © BaseX Team 2005-15.
+
+## Getting started
 #### Install [Docker](https://docs.docker.com/engine/installation/)
 - [Debian](https://docs.docker.com/v1.12/engine/installation/linux/debian/)
 - [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04#step-1-—-installing-docker)
