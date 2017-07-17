@@ -6,7 +6,7 @@ LRML Search is a web application for storing, viewing and searching LegalRuleML 
 
 ## Authorship and copyright
 
-LRML Search was written by Radostin Stoyanov and Andrea Faulds. Copyright © 2017 University of Aberdeen.
+LRML Search was written by [Radostin Stoyanov](https://github.com/rst0git) and [Andrea Faulds](https://github.com/hikari-no-yume). Copyright © 2017 University of Aberdeen.
 
 The `BaseXClient.php` is sourced from [the BaseX repository](https://github.com/BaseXdb/basex/blob/master/basex-api/src/main/php/BaseXClient.php), and is licensed under the BSD license. Copyright © BaseX Team 2005-15.
 
