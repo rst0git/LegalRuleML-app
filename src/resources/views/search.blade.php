@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Search')
+
 @section('content')
 <h3>Search</h3>
 <div class="well">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Index')
+
 @section('content')
   <div class="row">
     @if ($data['num_doc'] > 0)

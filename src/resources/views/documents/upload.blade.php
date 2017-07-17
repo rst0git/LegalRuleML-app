@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Upload document')
+
 @section('content')
 
 <div class="container" style="width:400px;">

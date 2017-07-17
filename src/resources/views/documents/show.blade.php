@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $data['doc']->title . ' document view')
+
 @section('content')
   @if($data['doc'])
     <div class="row">
