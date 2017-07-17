@@ -30,7 +30,8 @@ class DocumentsController extends Controller
     {
         $docs = Document::orderBy('created_at', 'desc')->paginate(7);
         $data = [
-            'num_doc' => count($docs),
+            'num_doc' => Document::count(),
+            'num_doc_shown' => count($docs),
             'docs' => $docs
         ];
         return view('documents.index')->with('data', $data);

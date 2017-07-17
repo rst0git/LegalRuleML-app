@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-offset-9 col-md-3">
-                        Uploaded Documents: {{$data['num_doc']}}
+                        Uploaded documents: {{$data['num_doc']}} ({{$data['num_doc_shown']}} shown)
                     </div>
                 </div>
             </div>
