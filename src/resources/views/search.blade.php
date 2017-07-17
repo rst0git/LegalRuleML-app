@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Search')
+@section('title')
+  @if(!empty($data['no_search']))
+    Search
+  @else
+    @if(!empty($data['statement']))
+      {{ $data['statement'] }}s
+    @else
+      All statements
+    @endif
+    @if(!empty($data['deontic_operator']))
+      containing {{ $data['deontic_operator'] }}s
+    @endif
+    @if(!empty($data['search']))
+      containing “{{ $data['search'] }}”
+    @endif
+    search results
+  @endif
+@endsection
 
 @section('content')
 <h3>Search</h3>
