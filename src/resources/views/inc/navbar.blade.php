@@ -31,7 +31,7 @@
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
                     <li>
-                        <a href={{route('doc_upload')}}>Upload Document</a>
+                        <a href={{route('doc_upload')}}>Upload documents</a>
                     </li>
                     <li><a href="{{ route('register') }}">Create account</a></li>
 

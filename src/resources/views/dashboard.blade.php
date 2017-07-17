@@ -29,7 +29,7 @@
                             <a href={{route('doc_upload')}}>
                                 <li>
                                     <span class="glyphicon glyphicon-upload"></span>
-                                    <span class="dashboard-title">Upload new document</span>
+                                    <span class="dashboard-title">Upload new documents</span>
                                 </li>
                             </a>
                         </ul>
