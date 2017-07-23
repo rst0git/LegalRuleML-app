@@ -86,7 +86,7 @@ class Converter extends Controller
             $overrides = $this->htmlDoc->createElement('div');
             $overrides->setAttribute('class', 'overrides');
             foreach ([
-                         "Overriden by: " => $this->overridden[$key] ?? null,
+                         "Overridden by: " => $this->overridden[$key] ?? null,
                          "Overrides: " => $this->overriding[$key] ?? null
                      ] as $label => $list) {
                 if ($list !== null) {
