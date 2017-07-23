@@ -4,9 +4,8 @@
 
 @section('content')
     <div class="jumbotron text-center">
-        <h3>LegalRuleML Search tool</h3>
-        <p>The is simple web application which allows us to browse and search</p>
-        <p>through corpus of Legal documents which are annotated with <a
+        <h3>{{ config('app.name', 'LRML Search') }}</h3>
+        <p>This is simple web application for browsing and searching a corpus of legal documents which are annotated with <a
                     href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=legalruleml">LegalRuleML</a></p>
     </div>
 @endsection
