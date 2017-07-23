@@ -59,6 +59,12 @@ chmod -R o+w src/public/uploads/
 docker-compose exec web bash -c "php artisan key:generate"
 ```
 
+#### User account
+
+By default (see `src/database/seeds/UsersTableSeeder.php`), a user account with the email address `user@localhost` and the password `lrmlsearch` is created. With this account, you can log in and upload or delete documents, as well as create other user accounts.
+
+For security reasons it is not a good idea to keep this initial account around; delete it or change its password. (Unfortunately, neither can be done directly through the interface right now.)
+
 ## File structure
 
 Routes
