@@ -30,6 +30,7 @@ class LRMLToHTMLConverter extends Controller
         "Paraphrase" => "span"
     ];
 
+    // TODO: We don't check namespaces for these right now
     const OMITTED_ELEMENTS = [
         "Rule" => true,
         "then" => true,
