@@ -46,6 +46,12 @@ class LRMLToHTMLConverter extends Controller
         "ReparationStatement" => "statement_handler",
     ];
 
+    const INTERNAL_RELATIONS = [
+        "Overridden by: " => "overridden",
+        "Overrides: " => "overriding",
+        "Has reparation: " => "reparations"
+    ];
+
     /**
      * @var \DOMDocument The HTML document being constructed
      */
@@ -100,27 +106,13 @@ class LRMLToHTMLConverter extends Controller
     {
         $key = $xml->getAttribute("key");
         $html->insertBefore(self::makeKeyElement($key), $html->firstChild);
-        if (isset($this->overridden[$key]) || isset($this->overriding[$key])) {
-            $overrides = $this->htmlDoc->createElement('div');
-            $overrides->setAttribute('class', 'overrides');
-            foreach ([
-                         "Overridden by: " => $this->overridden[$key] ?? null,
-                         "Overrides: " => $this->overriding[$key] ?? null
-                     ] as $label => $list) {
-                if ($list !== null) {
-                    $overrides->appendChild($this->htmlDoc->createTextNode($label));
-                    $overrides->appendChild($this->makeKeyList($list));
-                }
-            }
-            $html->appendChild($overrides);
-        }
-        if (isset($this->reparations[$key])) {
-            $reparations = $this->htmlDoc->createElement('div');
-            $reparations->setAttribute('class', 'reparations');
-            if (isset($this->reparations[$key])) {
-                $reparations->appendChild($this->htmlDoc->createTextNode("Has reparation: "));
-                $reparations->appendChild($this->makeKeyList($this->reparations[$key]));
-                $html->appendChild($reparations);
+        foreach (self::INTERNAL_RELATIONS as $label => $name) {
+            if (isset($this->$name[$key])) {
+                $tag = $this->htmlDoc->createElement('div');
+                $tag->setAttribute('class', $name);
+                $tag->appendChild($this->htmlDoc->createTextNode($label));
+                $tag->appendChild($this->makeKeyList($this->$name[$key]));
+                $html->appendChild($tag);
             }
         }
         if ($this->stripNS($xml->tagName) === 'ReparationStatement') {
