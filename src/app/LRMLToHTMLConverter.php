@@ -2,7 +2,6 @@
 
 namespace App;
 
-use const App\LRML_NS;
 use App\Http\Controllers\Controller;
 
 class LRMLToHTMLConverter extends Controller
