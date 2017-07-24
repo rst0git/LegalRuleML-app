@@ -10,6 +10,12 @@ LRML Search was written by [Radostin Stoyanov](https://github.com/rst0git) and [
 
 The `BaseXClient.php` is sourced from [the BaseX repository](https://github.com/BaseXdb/basex/blob/master/basex-api/src/main/php/BaseXClient.php), and is licensed under the BSD license. Copyright © BaseX Team 2005-15.
 
+## Maintenance notes
+
+This is a Laravel application. Therefore, its best practice should be adhered to in maintenance, e.g. database changes should have their own migrations.
+
+If you are modifying `LRMLToHTMLConverter`, bear in mind that in production, it is only run once for each document at the point of upload, and then the HTML version is cached in the PostgreSQL database. Therefore, changes made to the converter will only affect existing documents if they are reuploaded. By contrast, in debug mode it is run every time a document is viewed, allowing for rapid iteration.
+
 ## Getting started
 #### Install [Docker](https://docs.docker.com/engine/installation/)
 - [Debian](https://docs.docker.com/v1.12/engine/installation/linux/debian/)
