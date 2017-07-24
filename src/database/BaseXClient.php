@@ -8,10 +8,6 @@
  * (C) BaseX Team 2005-15, BSD License
  */
 
- namespace App\Http\Controllers;
-
-use Exception;
-
 class Session {
   // class variables.
   var $socket, $info, $buffer, $bpos, $bsize;

@@ -20,7 +20,8 @@
   },
   "autoload": {
     "files": [
-      "app/constants.php"
+      "app/constants.php",
+      "database/BaseXClient.php"
     ],
     "classmap": [
       "database"
