@@ -75,7 +75,7 @@ class DocumentsController extends Controller
                 $filepath = $destinationPath . DIRECTORY_SEPARATOR . $filename;
 
                 // Convert XML to HTML
-                $to_html = LRMLToHTMLConverter::xml_to_html($filepath);
+                $to_html = LRMLToHTMLConverter::XMLFileToHTML($filepath);
                 if ($to_html) {
                     //Upload XML content to BaseX
                     BaseXController::upload_file($filename, $filepath);
@@ -113,7 +113,7 @@ class DocumentsController extends Controller
         ];
         if (config('app.debug')) {
             $filepath = 'uploads' . DIRECTORY_SEPARATOR . $doc->filename;
-            $data['html'] = LRMLToHTMLConverter::xml_to_html($filepath);
+            $data['html'] = LRMLToHTMLConverter::XMLFileToHTML($filepath);
         }
         return view('documents.show')->with('data', $data);
     }

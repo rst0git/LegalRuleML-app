@@ -206,16 +206,10 @@ class LRMLToHTMLConverter extends Controller
         }
     }
 
-    public static function xml_to_html($infileContent, $is_file = true): string
+    public static function XMLFileToHTML(string $filename): string
     {
         $doc = new \DOMDocument();
-
-        if ($is_file == true) {
-            $doc->load($infileContent);
-        } else {
-            $doc->loadXML($infileContent);
-        }
-
+        $doc->load($filename);
 
         $convertor = new self;
         $convertor->collectRelations($doc);
@@ -223,7 +217,7 @@ class LRMLToHTMLConverter extends Controller
         return $convertor->htmlDoc->saveHTML($html);
     }
 
-    public static function DOM_to_html(
+    public static function XMLElementToHTML(
         \DOMElement $xml,
         string $url = "",
         array $overriding = [],
