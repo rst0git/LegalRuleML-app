@@ -82,7 +82,7 @@ class LRMLToHTMLConverter extends Controller
         $this->reparations = [];
     }
 
-    public function collectRelations(\DOMDocument $xmlDoc)
+    public function findRelations(\DOMDocument $xmlDoc)
     {
         $overrides = $xmlDoc->getElementsByTagNameNS(LRML_NS, "Override");
         foreach ($overrides as $override) {
@@ -220,7 +220,7 @@ class LRMLToHTMLConverter extends Controller
         $doc->load($filename);
 
         $converter = new self;
-        $converter->collectRelations($doc);
+        $converter->findRelations($doc);
         $html = $converter->toHTML($doc->documentElement);
         return $converter->htmlDoc->saveHTML($html);
     }
