@@ -12,7 +12,7 @@ LRML Search was written by [Radostin Stoyanov](https://github.com/rst0git) and [
 
 ## User's guide
 
-Documentation in Markdown format can be found in `src/resources/help/usersguide.md`, and also within the app itself.
+Documentation in Markdown format [can be found in `src/resources/help/usersguide.md`](src/resources/help/usersguide.md), and also within the app itself.
 
 ## Maintenance notes
 
