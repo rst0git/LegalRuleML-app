@@ -10,6 +10,10 @@ LRML Search was written by [Radostin Stoyanov](https://github.com/rst0git) and [
 
 `BaseXClient.php` is sourced from [the BaseX repository](https://github.com/BaseXdb/basex/blob/master/basex-api/src/main/php/BaseXClient.php), and is licensed under the BSD license. Copyright © BaseX Team 2005-15.
 
+## User's guide
+
+Documentation in Markdown format can be found under `resources/help/usersguide.md`, and also within the app itself.
+
 ## Maintenance notes
 
 This is a Laravel application. Therefore, its best practice should be adhered to in maintenance, e.g. database changes should have their own migrations.

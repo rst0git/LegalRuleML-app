@@ -33,3 +33,5 @@ Route::get('search', 'SearchController@index')->name('search');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/help', 'HelpController@index')->name('help');
