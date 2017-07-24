@@ -104,7 +104,7 @@ class BaseXController extends Controller
         $input .= 'let $keyref := concat("#", normalize-space($i/@key)) ';
         /*
          * Finds relevant override-overridden and reparation-prescriptive relations within the document.
-         * Note that LRMLToHTMLConverter has its own implementation for finding this relations, which is used when it
+         * Note that LRMLToHTMLConverter has its own implementation for finding these relations, which is used when it
          * is passed a whole document.
          * TODO: Support inter-file relations (keyrefs that contain an IRI before the #)
          */
