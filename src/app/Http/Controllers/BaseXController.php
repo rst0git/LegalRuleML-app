@@ -102,6 +102,12 @@ class BaseXController extends Controller
 
         $input .= 'let $doc := doc(concat(db:name($i), "/", db:path($i))) ';
         $input .= 'let $keyref := concat("#", normalize-space($i/@key)) ';
+        /*
+         * Finds relevant override-overridden and reparation-prescriptive relations within the document.
+         * Note that LRMLToHTMLConverter has its own implementation for finding this relations, which is used when it
+         * is passed a whole document.
+         * TODO: Support inter-file relations (keyrefs that contain an IRI before the #)
+         */
         $input .= 'let $reparations := $doc//lrml:ReparationStatement//lrml:toPrescriptiveStatement[normalize-space(@keyref)=$keyref]/../../@key ';
         $input .= 'let $overridden := $doc//lrml:Override[normalize-space(@under)=$keyref]/@over ';
         $input .= 'let $overriding := $doc//lrml:Override[normalize-space(@over)=$keyref]/@under ';

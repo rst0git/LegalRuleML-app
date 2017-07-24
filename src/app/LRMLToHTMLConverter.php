@@ -82,6 +82,14 @@ class LRMLToHTMLConverter extends Controller
         $this->reparations = [];
     }
 
+    /**
+     * Finds override-overridden and reparation-prescriptive relations within the document.
+     * Note that this is only used by the converter when given whole documents. For partial documents (i.e. search
+     * results), BaseXController will use XQuery to find these relations, so this method is not called on those.
+     * TODO: Support inter-file relations (keyrefs that contain an IRI before the #)
+     *
+     * @param \DOMDocument $xmlDoc The XML document within which to find the relations
+     */
     public function findRelations(\DOMDocument $xmlDoc)
     {
         $overrides = $xmlDoc->getElementsByTagNameNS(LRML_NS, "Override");
