@@ -32,10 +32,10 @@ class LRMLToHTMLConverter extends Controller
 
     // TODO: We don't check namespaces for these right now
     const OMITTED_ELEMENTS = [
-        "Rule" => true,
-        "then" => true,
-        "OverrideStatement" => true,
-        "Override" => true
+        "Rule" => true,                 // RuleML (http://ruleml.org/spec)
+        "then" => true,                 // RuleML (http://ruleml.org/spec)
+        "OverrideStatement" => true,    // LRML (http://docs.oasis-open.org/legalruleml/ns/v1.0/)
+        "Override" => true,             // LRML (http://docs.oasis-open.org/legalruleml/ns/v1.0/)
     ];
 
     const SPECIAL_ELEMENTS = [
