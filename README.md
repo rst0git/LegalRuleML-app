@@ -8,7 +8,7 @@ LRML Search is a web application for storing, viewing and searching LegalRuleML 
 
 LRML Search was written by [Radostin Stoyanov](https://github.com/rst0git) and [Andrea Faulds](https://github.com/hikari-no-yume). Copyright © 2017 University of Aberdeen.
 
-The `BaseXClient.php` is sourced from [the BaseX repository](https://github.com/BaseXdb/basex/blob/master/basex-api/src/main/php/BaseXClient.php), and is licensed under the BSD license. Copyright © BaseX Team 2005-15.
+`BaseXClient.php` is sourced from [the BaseX repository](https://github.com/BaseXdb/basex/blob/master/basex-api/src/main/php/BaseXClient.php), and is licensed under the BSD license. Copyright © BaseX Team 2005-15.
 
 ## Maintenance notes
 
@@ -73,6 +73,9 @@ For security reasons it is not a good idea to keep this initial account around; 
 
 ## File structure
 
+Special
+- `src/app/LRMLToHTMLConverter.php` LegalRuleML to HTML converter
+
 Routes
 - `src/routes/web.php` This file contains the routes of the application
 
@@ -100,9 +103,7 @@ Controllers
 - `src/app/Http/Controllers/Auth/LoginController.php` This controller handles authenticating users.
 - `src/app/Http/Controllers/Auth/RegisterController.php` This controller handles the registration of new users.
 - `src/app/Http/Controllers/Auth/ResetPasswordController.php` This controller is responsible for handling password reset requests.
-- `src/app/Http/Controllers/BaseXClient.php` PHP client for BaseX.
 - `src/app/Http/Controllers/BaseXController.php` This controller is responsible for the interaction with BaseX.
-- `src/app/Http/Controllers/Converter.php` XML to HTML converter
 - `src/app/Http/Controllers/DashboardController.php` Controller for the Dashboard shown after successful user login.
 - `src/app/Http/Controllers/DocumentsController.php` This controller is responsible Upload/Delete/Show/Download of documents.
 - `src/app/Http/Controllers/PagesController.php` This controller handles requests to the Home Page.
