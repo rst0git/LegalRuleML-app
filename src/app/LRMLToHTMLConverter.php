@@ -227,10 +227,10 @@ class LRMLToHTMLConverter extends Controller
         $doc = new \DOMDocument();
         $doc->load($filename);
 
-        $convertor = new self;
-        $convertor->collectRelations($doc);
-        $html = $convertor->toHTML($doc->documentElement);
-        return $convertor->htmlDoc->saveHTML($html);
+        $converter = new self;
+        $converter->collectRelations($doc);
+        $html = $converter->toHTML($doc->documentElement);
+        return $converter->htmlDoc->saveHTML($html);
     }
 
     public static function XMLElementToHTML(
@@ -240,11 +240,11 @@ class LRMLToHTMLConverter extends Controller
         array/*<array<string>>*/ $overridden = [],
         array/*<array<string>>*/ $reparations = []
     ): string {
-        $convertor = new self($url);
-        $convertor->overriding = $overriding;
-        $convertor->overridden = $overridden;
-        $convertor->reparations = $reparations;
-        $html = $convertor->toHTML($xml);
-        return $convertor->htmlDoc->saveHTML($html);
+        $converter = new self($url);
+        $converter->overriding = $overriding;
+        $converter->overridden = $overridden;
+        $converter->reparations = $reparations;
+        $html = $converter->toHTML($xml);
+        return $converter->htmlDoc->saveHTML($html);
     }
 }
