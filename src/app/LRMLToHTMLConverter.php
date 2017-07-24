@@ -2,6 +2,7 @@
 
 namespace App;
 
+use const App\LRML_NS;
 use App\Http\Controllers\Controller;
 
 class LRMLToHTMLConverter extends Controller
@@ -18,7 +19,6 @@ class LRMLToHTMLConverter extends Controller
     |
     */
 
-    const LRML_NS = "http://docs.oasis-open.org/legalruleml/ns/v1.0/";
 
     const ATTRIBUTE_MAP = [
         "key" => "id",
@@ -77,14 +77,14 @@ class LRMLToHTMLConverter extends Controller
 
     public function collectRelations(\DOMDocument $xmlDoc)
     {
-        $overrides = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "Override");
+        $overrides = $xmlDoc->getElementsByTagNameNS(LRML_NS, "Override");
         foreach ($overrides as $override) {
             $over = \trim(\ltrim($override->getAttribute("over"), "#"));
             $under = \trim(\ltrim($override->getAttribute("under"), "#"));
             $this->overridden[$under][] = $over;
             $this->overriding[$over][] = $under;
         }
-        $applications = $xmlDoc->getElementsByTagNameNS(self::LRML_NS, "toPrescriptiveStatement");
+        $applications = $xmlDoc->getElementsByTagNameNS(LRML_NS, "toPrescriptiveStatement");
         foreach ($applications as $application) {
             $prescriptiveKey = \trim(\ltrim($application->getAttribute("keyref"), "#"));
             $reparation = $application->parentNode->parentNode ?? null;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use const App\LRML_NS;
 use Illuminate\Http\Request;
 
 include('BaseXClient.php');
@@ -66,7 +67,7 @@ class BaseXController extends Controller
         bool $advanced = false,
         string $deonticOperator = ''
     ): array {
-        $input = 'declare namespace lrml = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"; ';
+        $input = 'declare namespace lrml = "' . LRML_NS . '"; ';
 
         $use_bind_variable = ($text !== '') || !$advanced;
 
