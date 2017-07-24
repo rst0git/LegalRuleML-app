@@ -1,7 +1,6 @@
 .key {
     font-size: small;
     font-weight: bold;
-    content: " [#" attr(id) "] ";
     color: black;
     text-decoration: underline;
     font-family: sans-serif;
