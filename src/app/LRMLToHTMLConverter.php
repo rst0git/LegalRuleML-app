@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App;
 
-class Converter extends Controller
+use App\Http\Controllers\Controller;
+
+class LRMLToHTMLConverter extends Controller
 {
     /*
     |--------------------------------------------------------------------------
