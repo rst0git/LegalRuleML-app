@@ -43,7 +43,6 @@ class LRMLToHTMLConverter extends Controller
         "PenaltyStatement" => "statement_handler",
         "PrescriptiveStatement" => "statement_handler",
         "ReparationStatement" => "statement_handler",
-        "ConstitutiveStatement" => "statement_handler",
     ];
 
     /**
