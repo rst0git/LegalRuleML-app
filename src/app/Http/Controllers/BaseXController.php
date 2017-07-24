@@ -147,27 +147,25 @@ class BaseXController extends Controller
             if ($lrml instanceof \DOMText) {
                 $lrml = $lrml->nextSibling;
             }
+            $resultArray = [
+                "path" => $result->getAttribute("path"),
+                "lrml" => $lrml,
+            ];
             // Transform XQuery overridden/overrides strings into neat arrays
             // of the format [$mainStatementKey => [$relatedStatementKey1, ...]]
             foreach (["overridden", "overriding", "reparations"] as $name) {
                 $string = $result->getAttribute($name);
-                $$name = [];
+                $resultArray[$name] = [];
                 if ($string !== '') {
                     $key = $lrml->getAttribute("key");
                     $keys = \array_map(function (string $key): string {
                         return \trim(\ltrim($key, "#"));
                         // split by whitespace, except if at the start or end of string
                     }, \preg_split('/(?!^)\s+(?!$)/', $string));
-                    $$name[$key] = $keys;
+                    $resultArray[$name][$key] = $keys;
                 }
             }
-            $results[] = [
-                "path" => $result->getAttribute("path"),
-                "lrml" => $lrml,
-                "overridden" => $overridden,
-                "overriding" => $overriding,
-                "reparations" => $reparations
-            ];
+            $results[] = $resultArray;
         }
 
         return $results;
