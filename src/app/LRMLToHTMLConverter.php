@@ -236,9 +236,9 @@ class LRMLToHTMLConverter extends Controller
     public static function XMLElementToHTML(
         \DOMElement $xml,
         string $url = "",
-        array $overriding = [],
-        array $overridden = [],
-        array $reparations = []
+        array/*<array<string>>*/ $overriding = [],
+        array/*<array<string>>*/ $overridden = [],
+        array/*<array<string>>*/ $reparations = []
     ): string {
         $convertor = new self($url);
         $convertor->overriding = $overriding;
