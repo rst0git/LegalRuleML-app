@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\LRMLToHTMLConverter;
 use Illuminate\Http\Request;
 
-Use App\Document;
-Use App\Http\Controllers\BaseXController;
-
 class SearchController extends Controller
 {
     /*
