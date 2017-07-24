@@ -46,10 +46,26 @@ class LRMLToHTMLConverter extends Controller
         "ConstitutiveStatement" => "statement_handler",
     ];
 
+    /**
+     * @var \DOMDocument The HTML document being constructed
+     */
     private $htmlDoc;
+    /**
+     * @var string The URL of the document these elements are found in, used to generate keyrefs ("" if current page)
+     */
     private $url;
+    /**
+     * @var array<array<string>> A map of keys of overridden statements to arrays of keys of overriding statements
+     */
     private $overridden;
+    /**
+     * @var array<array<string>> A map of keys of overriding statements to arrays of keys of overridden statements
+     */
     private $overriding;
+    /**
+     * @var array<array<string>> A map of keys of reparation statements to arrays of keys of applicable statements
+     */
+    private $reparations;
 
     private function __construct(string $url = "")
     {
@@ -57,7 +73,7 @@ class LRMLToHTMLConverter extends Controller
         $this->url = $url;
         $this->overridden = [];
         $this->overriding = [];
-        $this->reparations = [];;
+        $this->reparations = [];
     }
 
     public function collectRelations(\DOMDocument $xmlDoc)
