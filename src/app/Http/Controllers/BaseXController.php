@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use const App\LRML_NS;
-use \Session;
+
+use Illuminate\Http\Request;
+
+include('BaseXClient.php');
 
 class BaseXController extends Controller
 {

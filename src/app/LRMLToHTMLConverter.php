@@ -4,6 +4,8 @@ namespace App;
 
 use App\Http\Controllers\Controller;
 
+const LRML_NS = "http://docs.oasis-open.org/legalruleml/ns/v1.0/";
+
 class LRMLToHTMLConverter extends Controller
 {
     /*
