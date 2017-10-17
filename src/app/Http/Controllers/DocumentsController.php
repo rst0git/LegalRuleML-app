@@ -19,9 +19,8 @@ class DocumentsController extends Controller
     |
     | This controller is responsible Upload, Delete, Show and
     | Download of documents. The shown document is HTML version of
-    | the original uploaded XML file. Upload/Destroy functionality
-    | performs thse to both the Relational Database (PostreSQL) as
-    | well as XML DB (BaseX).
+    | the original uploaded XML file. Upload/Destroy is performed
+    | for both the Relational Database (PostreSQL) and XML DB (BaseX).
     |
     */
 
