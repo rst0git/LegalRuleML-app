@@ -28,6 +28,7 @@ class DocumentsController extends Controller
     public function index()
     {
         $docs = Document::orderBy('created_at', 'desc')->paginate(7);
+        $docs->withPath(route('doc')); // Set Base URL for pagination
         $data = [
             'num_doc' => Document::count(),
             'num_doc_shown' => count($docs),
