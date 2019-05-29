@@ -80,6 +80,14 @@ chmod -R o+w src/public/uploads/
 docker-compose exec web bash -c "php artisan key:generate"
 ```
 
+#### Enabled SELinux
+
+If SELinux is enabled the security context of the `src` directory needs to be set accordingly.
+
+```
+chcon -Rt svirt_sandbox_file_t ./src
+```
+
 #### User account
 
 By default (see `src/database/seeds/UsersTableSeeder.php`), a user account with the email address `user@localhost` and the password `lrmlsearch` is created. With this account, you can log in and upload or delete documents, as well as create other user accounts.
