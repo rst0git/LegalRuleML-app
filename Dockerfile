@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:7.1-apache
 
 # Update and install PostgreSQL dependencies
 RUN apt-get -y -qq update && apt-get install -y libpq-dev
