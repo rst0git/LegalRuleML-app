@@ -32,60 +32,13 @@ This is a Laravel application. Therefore, its best practice should be adhered to
 If you are modifying `LRMLToHTMLConverter`, bear in mind that in production, it is only run once for each document at the point of upload, and then the HTML version is cached in the PostgreSQL database. Therefore, changes made to the converter will only affect existing documents if they are reuploaded. By contrast, in debug mode it is run every time a document is viewed, allowing for rapid iteration.
 
 ## Getting started
-#### Install [Docker](https://docs.docker.com/engine/installation/)
-- [Debian](https://docs.docker.com/v1.12/engine/installation/linux/debian/)
-- [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04#step-1-—-installing-docker)
-- [Linux Mint](http://linuxbsdos.com/2016/12/13/how-to-install-docker-and-run-docker-containers-on-linux-mint-1818-1/)
-- [Arch linux](https://wiki.archlinux.org/index.php/Docker#Installation)
 
-#### Install [docker-compose](https://docs.docker.com/compose/install/)
-- For Ubuntu
+Install [Docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/)
+
+
 ```sh
-apt-get install -y docker-compose
-```
-
-- Using pip
-```sh
-pip install docker-compose
-```
-#### Install the php extensions: `php-zip`, `php-mbstring`, `php-xml`
-- For Ubuntu
-```sh
-apt-get install -y php7.0 php7.0-zip php7.0-mbstring php7.0-xml
-```
-
-#### Copy `.env.example` to `.env`
-```sh
-cp ./src/.env.example ./src.env
-```
-
-#### Run `composer install`
-```sh
-cd ./src
-curl -sS https://getcomposer.org/installer | php
-php composer.phar install
-```
-
-#### Execute `run.sh`
-```sh
-./run.sh
-```
-
-#### Finally set file permissions and generate session key
-```
-chmod -R 755 src/
-chmod -R o+w src/storage/
-chmod -R o+w src/bootstrap/cache/
-chmod -R o+w src/public/uploads/
-docker-compose exec web bash -c "php artisan key:generate"
-```
-
-#### Enabled SELinux
-
-If SELinux is enabled the security context of the `src` directory needs to be set accordingly.
-
-```
-chcon -Rt svirt_sandbox_file_t ./src
+docker-compose up -d
+docker-compose run web bash -c 'php artisan migrate && php artisan db:seed --class=UsersTableSeeder'
 ```
 
 #### User account

@@ -1,23 +1,27 @@
-FROM php:7.1-apache
+FROM php:7.4-apache
 
-# Update and install PostgreSQL dependencies
-RUN apt-get -y -qq update && apt-get install -y libpq-dev
+RUN apt-get update -y -qq && \
+    apt-get install -y --no-install-recommends \
+        libpq-dev \
+        git \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install php extensions
+# Install php extensions for PostgreSQL
 RUN docker-php-ext-install pdo pdo_pgsql pgsql sockets
 
-
-# Enable rewrite module to allow URLs from laravel
+# Enable rewrite module to enable laravel URL routes
 RUN a2enmod rewrite
 
-# Copy Apache config
+WORKDIR /var/www/html
+
 COPY ./config/000-default.conf /etc/apache2/sites-available/
+COPY ./src /var/www/html
 
-# Note: Comment out the lines below to reduce the build time
-
-# Set ownership for Laravel's storage folder
-#ADD ./src /var/www/html
-#RUN chown -R www-data:www-data /var/www/html/storage
-
-# Migrate Database
-#RUN php artisan migrate
+# Install composer and initialize application
+RUN cd /var/www/html && \
+    curl -sS https://getcomposer.org/installer | php && \
+    php composer.phar install && \
+    chown -R www-data:www-data ./storage && \
+    cp .env.example .env && \
+    php artisan key:generate
